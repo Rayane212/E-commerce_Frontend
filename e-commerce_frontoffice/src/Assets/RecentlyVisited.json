@@ -1,0 +1,59 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Laptop",
+        "brand": "TechMaster",
+        "price": 999.99,
+        "image": "laptop.jpg",
+        "description": "Puissant ordinateur portable avec des spécifications haute performance.",
+        "last_visited": "2023-11-09T12:30:00+01:00"
+      },
+      {
+        "id": 2,
+        "name": "Smartphone",
+        "brand": "GadgetTech",
+        "price": 499.99,
+        "image": "smartphone.jpg",
+        "description": "Dernier smartphone avec un écran époustouflant.",
+        "last_visited": "2023-11-08T15:45:00+01:00"
+      },
+      {
+        "id": 3,
+        "name": "Headphones",
+        "brand": "AudioPro",
+        "price": 149.99,
+        "image": "headphones.jpg",
+        "description": "Casque sans fil avec fonction de suppression du bruit.",
+        "last_visited": "2023-11-09T09:20:00+01:00"
+      },
+      {
+        "id": 4,
+        "name": "Smart Watch",
+        "brand": "WristTech",
+        "price": 199.99,
+        "image": "smartwatch.jpg",
+        "description": "Restez connecté avec cette élégante montre intelligente.",
+        "last_visited": "2023-11-07T18:10:00+01:00"
+      },
+      {
+        "id": 5,
+        "name": "Camera",
+        "brand": "PhotoPro",
+        "price": 299.99,
+        "image": "camera.jpg",
+        "description": "Appareil photo haute résolution pour des photos exceptionnelles.",
+        "last_visited": "2023-11-10T08:45:00+01:00"
+      },
+      {
+        "id": 6,
+        "name": "Gaming Console",
+        "brand": "GameMaster",
+        "price": 449.99,
+        "image": "gaming_console.jpg",
+        "description": "Console de jeu ultime pour une expérience de jeu immersive.",
+        "last_visited": "2023-11-08T20:30:00+01:00"
+      }
+    ]
+  }
+  
