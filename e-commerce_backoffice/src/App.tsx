@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import './App.css';
 import LeftBar from './assets/tsx/LeftBar';
-import Main from './assets/tsx/Main';
+import Orders_2 from './assets/tsx/orders/Orders_2';
 
 const App: FC = () => {
   return (
     <div className="App">
      <LeftBar/>
-     <Main component={{ name: "Commande", comm: "orders" }} />
+     <Orders_2 />
     </div>
   );
 }
