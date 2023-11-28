@@ -1,0 +1,17 @@
+[
+    {
+      "id": "1",
+      "title": "Livraison Standard en 7 jours",
+      "delivery_time": "7",
+      "price": "0",
+      "available": true
+    },
+    {
+        "id": "2",
+        "title": "Livraison Express en 3 jours",
+        "delivery_time": "7",
+        "price": "0",
+        "available": true
+      }
+  ]
+  

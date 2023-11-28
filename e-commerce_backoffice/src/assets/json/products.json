@@ -1,0 +1,47 @@
+[
+    {
+      "id": "1",
+      "title": "Produit 1",
+      "on_sale": true,
+      "stock": "200",
+      "category": "T-shirt",
+      "supplier": "Nike",
+      "price_regular": "39.99",
+      "price_on_sale": "29.99",
+      "available": true
+    },
+    {
+      "id": "2",
+      "title": "Produit 2",
+      "on_sale": false,
+      "stock": "500",
+      "category": "Vestes",
+      "supplier": "North Face",
+      "price_regular": "59.99",
+      "price_on_sale": "49.99",
+      "available": true
+    },
+    {
+      "id": "3",
+      "title": "Produit 3",
+      "on_sale": false,
+      "stock": "0",
+      "category": "Pantalons",
+      "supplier": "Levis",
+      "price_regular": "19.99",
+      "price_on_sale": "9.99",
+      "available": false
+    },
+    {
+      "id": "4",
+      "title": "Produit 4",
+      "on_sale": false,
+      "stock": "100",
+      "category": "Chaussures",
+      "supplier": "Adidas",
+      "price_regular": "89.99",
+      "price_on_sale": "69.99",
+      "available": false
+    }
+  ]
+  

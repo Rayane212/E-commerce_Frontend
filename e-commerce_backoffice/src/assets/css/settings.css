@@ -1,0 +1,24 @@
+.generalSettings_container{
+    margin:5px;
+}
+.generalSettings_container > h2{
+    margin: 10px;
+    text-align: center;
+}
+.section_settings_container{
+    margin:10px;
+    background-color: var(--background-color);
+    padding: 10px;
+    border-radius: 10px;
+}
+.profilSettings_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.btn_container{
+    display: flex;
+    justify-content: center;
+}
