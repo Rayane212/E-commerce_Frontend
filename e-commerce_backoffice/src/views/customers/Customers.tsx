@@ -11,7 +11,6 @@ function Customers(){
       <Customers_Header/>
       <Customers_Recap/>
       <div className='table_container'>
-        <CustomersFilter/>
         <CustomersTable/>
       </div>
     </div>

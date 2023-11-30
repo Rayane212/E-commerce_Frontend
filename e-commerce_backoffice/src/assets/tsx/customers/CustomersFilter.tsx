@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PopUpSortCustomers from '../../../views/customers/PopUpSortCustomers';
-
+import useCustomersTable from './useCustomersTable';
 
 export default function OrdersFilter() {
     function dontRedirect(e: any) {
@@ -38,7 +38,7 @@ export default function OrdersFilter() {
             <thead>
                 <tr>
                     <td className="tg-ycr8 research_container">
-                        <input type="text" id="customer_research" placeholder="Rechercher..." />
+                        <input type="text" id="customer_research" placeholder="Rechercher..." onChange={(e:React.ChangeEvent<HTMLInputElement>)=> useCustomersTable.customerSearch(e)}/>
                     </td>
                     <td className="tg-ycr8 sort_main_container">
                         <a href='#' onClick={dontRedirect} className='btn'>

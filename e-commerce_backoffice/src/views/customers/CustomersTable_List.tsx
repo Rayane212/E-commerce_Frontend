@@ -2,16 +2,16 @@ import React, { FC, useEffect, useState } from 'react';
 import { CustomersTableProps } from '../../models/CustomersTableProps'
 import { Customer } from '../../models/Customer';
 
-const CustomersTable_List: FC<CustomersTableProps> = ({ data }) => {
+const CustomersTable_List: FC<CustomersTableProps> = ({ list }) => {
   const currency: string[] = ["euro", "EUR", "€"];
-  const [orders, setOrders] = useState<Customer[]>([]);
+  const [data, setData] = useState<Customer[]>([]);
   useEffect(() => {
-    setOrders(data);
+    setData(list);
   }, [data]);
   return (
     <tbody>
       <>
-        {orders.map((item: Customer) => (
+        {data.map((item: Customer) => (
           <tr className='result_row' key={item.id}>
             <td className="tg-ycr8">{item.id}</td>
             <td className="tg-ycr8">{item.name}</td> 

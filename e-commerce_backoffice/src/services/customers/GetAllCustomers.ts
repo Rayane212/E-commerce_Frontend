@@ -8,7 +8,6 @@ function GetAllCustomers(){
     if(isRequest){return []}
     isRequest = true;
     const data : Customer [] = customers; 
-    console.log('GetAllCustomers');
     isRequest = false;
     return data
 }

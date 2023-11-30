@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import useCustomersTable from '../../assets/tsx/customers/useCustomersTable';
 
-export default function PopUpSort() {
-    const [selectedOption, setSelectedOption] = useState('');
-    
-    useEffect(() => {
-        if (selectedOption === ''){
-            setSelectedOption('id_asc');
-        }
-    }, [selectedOption]);
-    const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedValue = event.target.value;
-        setSelectedOption(selectedValue);
-    };
+export default function PopUpSortCustomers() {
   return (
     <fieldset className='pop_up_sort sort_fiels_container'>
-        <select value={selectedOption} onChange={handleOptionChange} id='sort_select'>
+        <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => useCustomersTable.customerSort(e)} id='sort_select'>
             <option value="id_asc"> Par ID Croissant</option>
             <option value="id_desc"> Par ID Décroissant</option>
             <option value="name_asc"> Par Nom (A-Z)</option>
