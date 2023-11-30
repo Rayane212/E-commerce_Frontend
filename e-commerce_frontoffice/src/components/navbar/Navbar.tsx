@@ -4,7 +4,7 @@ import "../../App.css";
 import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../assets/Images/Sneaker-removebg-preview.png";
+import logo from "../../assets/images/Sneaker-removebg-preview.png";
 
 export default function Navbar() {
   return (
