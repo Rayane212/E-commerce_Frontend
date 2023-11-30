@@ -69,6 +69,56 @@
       "description": "Lightweight and responsive running shoes for speed enthusiasts.",
       "color": "Blue/White",
       "size": ["US 7.5", "US 8.5", "US 9.5", "US 10.5"]
+    },
+    {
+      "id": 8,
+      "name": "Classic White Sneakers",
+      "brand": "Nike",
+      "price": 89.99,
+      "image": "https://example.com/classic-white-sneakers.jpg",
+      "description": "Timeless white sneakers for a clean and stylish look.",
+      "color": "White",
+      "size": ["US 7", "US 8", "US 9", "US 10"]
+    },
+    {
+      "id": 9,
+      "name": "Running Boost 3000",
+      "brand": "Adidas",
+      "price": 109.99,
+      "image": "https://example.com/running-boost-3000.jpg",
+      "description": "High-performance running shoes with advanced Boost technology.",
+      "color": "Black/Blue",
+      "size": ["US 7.5", "US 8.5", "US 9.5", "US 10.5"]
+    },
+    {
+      "id": 10,
+      "name": "Air Max Ultra",
+      "brand": "Nike",
+      "price": 129.99,
+      "image": "https://example.com/air-max-ultra.jpg",
+      "description": "Ultra-comfortable Air Max sneakers with modern design.",
+      "color": "Grey/Red",
+      "size": ["US 8", "US 9", "US 10", "US 11"]
+    },
+    {
+      "id": 11,
+      "name": "Trail Blazer Hiking Shoes",
+      "brand": "Merrell",
+      "price": 79.99,
+      "image": "https://example.com/trail-blazer-hiking-shoes.jpg",
+      "description": "Durable hiking shoes for outdoor adventures.",
+      "color": "Brown/Green",
+      "size": ["US 7", "US 8", "US 9", "US 10"]
+    },
+    {
+      "id": 12,
+      "name": "Swift Run X",
+      "brand": "Adidas",
+      "price": 94.99,
+      "image": "https://example.com/swift-run-x.jpg",
+      "description": "Versatile and comfortable running shoes for everyday use.",
+      "color": "Black/White",
+      "size": ["US 7.5", "US 8.5", "US 9.5", "US 10.5"]
     }
   ]
 }
