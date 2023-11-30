@@ -4,7 +4,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #EAF4F4;
     font-family: 'Roboto', 'sans-serif';
-    /* --bgcolor: red; */
+    --primary-color: #708090;
+    --secondary-color: #C0C0C0;
+    --tertiary-color: #2F4F4F;
+    --accent-color: #4682B4;
+}
+
+body {
+    background-color: var(--secondary-color);
 }

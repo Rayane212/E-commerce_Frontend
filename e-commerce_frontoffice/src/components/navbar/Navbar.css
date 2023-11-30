@@ -1,0 +1,30 @@
+nav{
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5em;
+    background-color: var(--primary-color);
+    & img{
+        width: 10em;
+    }
+    & ul{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & li{
+            padding: 1em 2em;
+            &:hover{
+                color: var(--secondary-color);
+                border-bottom: 1px solid var(--secondary-color);
+            }
+            & a{
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+}
+
