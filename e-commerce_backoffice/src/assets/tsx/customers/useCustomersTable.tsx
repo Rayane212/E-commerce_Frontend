@@ -15,7 +15,7 @@ class useCustomersTable{
     async asyncFilterCustomers(){
         const data = await this.GetCustomers();
         const filter_data = FilterCustomers(data);
-        return filter_data;
+        return {data, filter_data};
     }
 
     async customerSearch(e: React.ChangeEvent<HTMLInputElement>){
@@ -24,6 +24,7 @@ class useCustomersTable{
         if (searchValue !== '') {
             const result_list = CustomersResearch(allCustomers, searchValue);
             return result_list;
+            
         }
         else{
             return allCustomers;

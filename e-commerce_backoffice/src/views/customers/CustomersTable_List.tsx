@@ -4,14 +4,10 @@ import { Customer } from '../../models/Customer';
 
 const CustomersTable_List: FC<CustomersTableProps> = ({ list }) => {
   const currency: string[] = ["euro", "EUR", "€"];
-  const [data, setData] = useState<Customer[]>([]);
-  useEffect(() => {
-    setData(list);
-  }, [data]);
   return (
     <tbody>
       <>
-        {data.map((item: Customer) => (
+        {list.map((item: Customer) => (
           <tr className='result_row' key={item.id}>
             <td className="tg-ycr8">{item.id}</td>
             <td className="tg-ycr8">{item.name}</td> 

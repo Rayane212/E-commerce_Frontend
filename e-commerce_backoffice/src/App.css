@@ -205,6 +205,10 @@ label{
   padding:10px;
 }
 
+.sort_main_container{
+  position:relative; 
+}
+
 select{
   background-color: transparent;
   margin: 5px;
@@ -235,9 +239,9 @@ select{
 }
 
 .sort_fiels_container{
-  position: fixed;
-  top: 40vh;
-  right:10px;
+  position: absolute;
+  top: 0;
+  right:0;
   padding: 2px;
   opacity: 0;
 }
