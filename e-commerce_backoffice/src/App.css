@@ -238,7 +238,7 @@ select{
     margin: 20px 0;
 }
 
-.sort_fiels_container{
+.sort_fields_container{
   position: absolute;
   top: 0;
   right:0;
@@ -246,7 +246,7 @@ select{
   opacity: 0;
 }
 
-.sort_fiels_container select{
+.sort_fields_container select{
   width: 8vh;
   height: 8vh;
 }

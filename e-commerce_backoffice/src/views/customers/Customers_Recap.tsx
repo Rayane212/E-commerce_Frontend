@@ -1,7 +1,6 @@
 import React from 'react'
 import GetAllCustomers from '../../services/customers/GetAllCustomers';
 import FilterCustomers from '../../services/customers/FilterCustomers';
-import OrdersResearch from '../../services/orders/OrdersResearch';
 
 export default function Customer_Recap() {
     const allCustomers = GetAllCustomers();

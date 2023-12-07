@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import { Order} from '../../models/Order';
 import GetAllOrders from './GetAllOrders';
-import FormatDate from '../FormatDate';
+import FormatDate from '../general/FormatDate';
 
 export default function CreateOrder(formData: FormData) {
   const all_orders = GetAllOrders();

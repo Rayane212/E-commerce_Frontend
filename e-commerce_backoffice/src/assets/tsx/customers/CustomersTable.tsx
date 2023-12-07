@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { Customer } from '../../../models/Customer';
-import CustomersTable_List from '../../../views/customers/CustomersTable_List';
+import TableList from '../../../views/general/TableList';
 import NoResult from '../../../views/NoResult';
-import useCustomersTable from './useCustomersTable';
-import PopUpSortCustomers from '../../../views/customers/PopUpSortCustomers';
-import { CustomersTableProps } from '../../../models/CustomersTableProps';
+import useCustomersTable from '../../../services/customers/useCustomersTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import TableTitle from '../../../views/general/TableTitle';
+import SortOptions from '../../../views/general/SortOptions';
+
 
 type CustomerState = {
     customers: Customer[];
@@ -17,6 +18,8 @@ type CustomerState = {
 export default function CustomersTable() {
     const [state, setState] = useState<CustomerState>();
     const filtered_list = useCustomersTable.asyncFilterCustomers();
+    const tableHeaders = ['ID', 'Nom', 'Mail', 'Abonné', 'Nombre de Commande', 'Nombre d\'articles Commandés', 'Montant Dépensé']
+    const optionList = {'id_asc': 'Par ID Croissant', 'id_desc': 'Par ID Décroissant', 'name_asc': 'Par Nom (A-Z)', 'name_desc': 'Par Nom (Z-A)', 'total_asc': 'Par Total Croissant', 'total_desc': 'Par Total Décroissant', 'articles_asc': 'Par Nombre d\'articles Croissant', 'articles_desc': 'Par Nombre d\'articles Décroissant', 'orders_asc': 'Par Nombre de Commande Croissant', 'orders_desc': 'Par Nombre de Commande Décroissant'}
     
     let filtered_data: {
         all_customers: Customer[];
@@ -40,8 +43,6 @@ export default function CustomersTable() {
     
     });
     
-    
-
     const dontRedirect = (e: any) => {
         e.preventDefault();
     }
@@ -90,6 +91,11 @@ export default function CustomersTable() {
         input.value = '';
     }
 
+    const reinit_sort = () => {
+        const select = document.getElementById('sort_select') as HTMLSelectElement;
+        select.value = 'id_asc';
+    }
+
     const filter__view = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const element = e.target as HTMLButtonElement;
         const data_list_element = element.dataset.list;
@@ -102,6 +108,7 @@ export default function CustomersTable() {
                 showList: true
             })
             reinit_input()
+            reinit_sort()
         }
         else{
             setState({
@@ -111,7 +118,33 @@ export default function CustomersTable() {
                 showList: false
             })
             reinit_input()
+            reinit_sort()
         }
+        
+    }
+
+    const sort_view = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        e.preventDefault();
+        const sorted_list = useCustomersTable.customerSort(e, state?.customers as Customer[]);
+        sorted_list.then((result) => {
+            if (result !== undefined) {
+                setState({
+                    customers: result,
+                    searchValue: state?.searchValue as string,
+                    selectedOption: e.target.value,
+                    showList: true
+                })
+                
+            }
+            else{
+                setState({
+                    customers: [],
+                    searchValue: state?.searchValue as string,
+                    selectedOption: e.target.value,
+                    showList: false
+                })
+            }
+        })
         
     }
     
@@ -146,23 +179,13 @@ export default function CustomersTable() {
                                 <a href='#' onClick={dontRedirect} className='btn'>
                                     <button className='filter__btn no_background' id="sort__btn" >
                                         <FontAwesomeIcon className="i icon" icon={["fas", "sort"]} />
-                                        
                                     </button>
                                 </a>
-                                <fieldset className='pop_up_sort sort_fiels_container'>
-                                    <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => useCustomersTable.customerSort(e)} id='sort_select'>
-                                        <option value="id_asc"> Par ID Croissant</option>
-                                        <option value="id_desc"> Par ID Décroissant</option>
-                                        <option value="name_asc"> Par Nom (A-Z)</option>
-                                        <option value="name_desc"> Par Nom (Z-A)</option>
-                                        <option value="total_asc"> Par Total Croissant</option>
-                                        <option value="total_desc"> Par Total Décroissant</option>
-                                        <option value="articles_asc"> Par Nombre d'articles Croissant </option>
-                                        <option value="articles_desc"> Par Nombre d'articles Décroissant</option>
-                                        <option value="orders_asc"> Par Nombre de Commande Croissant </option>
-                                        <option value="orders_desc"> Par Nombre d'articles Décroissant</option>
+                                <div className='pop_up_sort sort_fields_container'>
+                                    <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => sort_view(e)} id='sort_select'>
+                                        <SortOptions list={optionList}/>
                                     </select>
-                                </fieldset>
+                                </div>
                             </td>  
                         </tr>
                         
@@ -171,21 +194,11 @@ export default function CustomersTable() {
             </div>
             <div className='table_list'>
                 <div className='results'>
-                <table className='tg'>
-                <thead>
-                    <tr className='table_header'>
-                        <td className="tg-ycr8 border-right">ID</td>
-                        <td className="tg-ycr8 border-right">Nom</td> 
-                        <td className="tg-ycr8 border-right">Mail</td> 
-                        <td className="tg-ycr8 border-right">Abonné</td> 
-                        <td className="tg-ycr8 border-right">Nombre de Commande</td>  
-                        <td className="tg-ycr8 border-right">Nombre d'articles Commandés</td> 
-                        <td className="tg-ycr8 border-right">Montant Dépensé</td>
-                    </tr>
-                </thead>
-                    {state?.showList ? <CustomersTable_List list={state?.customers}/>: ''}
-                </table>
-                {!state?.showList ? <NoResult/> : ''}
+                    <table className='tg'>
+                        <TableTitle list={tableHeaders}/>
+                        {state?.showList ? <TableList customers={state?.customers} orders={[]}/>: null}
+                    </table>
+                    {!state?.showList ? <NoResult/> : null}
                 </div>
             </div>
         </div>

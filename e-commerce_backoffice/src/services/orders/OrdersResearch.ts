@@ -1,31 +1,28 @@
 import { Order } from '../../models/Order';
-import FormatDate from '../FormatDate';
+import FormatDate from '../general/FormatDate';
 
 function OrdersResearch(list: Order[], search: string) {
   let orderSearch: Order[] = [];
   let isResult: boolean = false;
-  try {
-    if (search === '') {
-      setOrderSearch(list);
-    } else {
-      if (search.includes('-')){ // Date ou Client
-        const inputDate = new Date(search);
-        inputDate.toString().includes('Invalid') ? clientResearch(search) : orderDateResearch(inputDate);
-      } 
-      else{ // ID ou Client
-        const value = parseInt(search);
-        if (isNaN(value)){
-          const result = clientResearch(search);
-          !result ? setIsResult(false) : setIsResult(true);
-        }
-        else{
-          const result = orderIdResearch(search);
-          !result ? setIsResult(false): setIsResult(true);
-        }
-        
-      }
+  try{
+    if (search.includes('-')){ // Date ou Client
+      const inputDate = new Date(search);
+      inputDate.toString().includes('Invalid') ? clientResearch(search) : orderDateResearch(inputDate);
     }
-  } catch (error) {
+    else{
+      const value = parseInt(search);
+      if (isNaN(value)){
+        const result = clientResearch(search);
+        !result ? setIsResult(false) : setIsResult(true);
+      }
+      else{
+        const result = orderIdResearch(search);
+        !result ? setIsResult(false): setIsResult(true);
+      }
+    
+    }
+  }
+  catch(error){
     console.log(error);
   }
     
@@ -76,6 +73,9 @@ function OrdersResearch(list: Order[], search: string) {
     
     if (isResult) {
       return orderSearch;
+    }
+    else{
+      return false; 
     }
 }
 

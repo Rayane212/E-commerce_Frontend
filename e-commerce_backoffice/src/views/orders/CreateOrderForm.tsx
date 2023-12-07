@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import ShippingMethodService from '../../services/shipping_method/ShippingMethodService';
+import ShippingMethodService from '../../services/general/ShippingMethodService';
 import { ShippingMethod } from '../../models/ShippingMethod';
 import CreateOrder from '../../services/orders/CreateOrder';
 

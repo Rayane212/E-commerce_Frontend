@@ -1,20 +1,22 @@
 import React from 'react'
 import '../../assets/css/order.css';
-import useOrders from '../../services/orders/FilterOrders'
-import OrdersHeader from './OrdersHeader'
-import OrdersRecap from '../../assets/tsx/orders/OrdersRecap'
-import OrdersFilter from './OrdersFilter'
+import OrdersRecap from './OrdersRecap'
 import OrdersTable from '../../assets/tsx/orders/OrdersTable'
 import CreateOrderForm from './CreateOrderForm';
+import PageHeader from '../general/PageHeader';
 
 export default function Orders() {
   return (
     <div className='main_container'>
-        <OrdersHeader/>
+        <PageHeader
+        title='Commandes'
+        link='create_order'
+        isButton={true}
+        buttonTitle='Créer une commande'
+      />
         <CreateOrderForm/>
         <OrdersRecap/>
         <div className='table_container'>
-          <OrdersFilter/>
           <OrdersTable/>
         </div>
     </div>

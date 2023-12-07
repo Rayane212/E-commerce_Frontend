@@ -1,4 +1,4 @@
-import FormatDate from '../FormatDate';
+import FormatDate from '../general/FormatDate';
 import { Customer } from '../../models/Customer';
 
 function CustomersResearch(list: Customer[], search: string) {
