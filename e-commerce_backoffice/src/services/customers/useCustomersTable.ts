@@ -43,6 +43,10 @@ class useCustomersTable{
         }
     }
 
+    async addOrder(){
+        
+    }
+
 }
 
 

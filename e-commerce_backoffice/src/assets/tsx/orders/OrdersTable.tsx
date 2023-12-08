@@ -17,6 +17,7 @@ type OrderState = {
 function OrdersTable() {
   const [state, setState] = useState<OrderState>();
   const filtered_orders = useOrdersTable.asyncFilterOrders();
+  const allCustomers = useOrdersTable.GetOrders();
   const tableHeaders = ['ID', 'Date', 'Client', 'Total', 'Nombre d\'articles', 'Méthode de Livraison', 'Statut', 'Process'];
   const optionList = {
     'id_asc': 'Par ID Croissant',
@@ -59,7 +60,6 @@ filtered_orders.then((result) => {
 
 
   useEffect(() => {
-    const allCustomers = useOrdersTable.GetOrders();
     allCustomers.then((result) => {
         if (result !== undefined) {
             setState({
@@ -70,8 +70,7 @@ filtered_orders.then((result) => {
             })
         }
     })
-}, []);
-
+  }, [allCustomers]);
 
   const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -159,6 +158,7 @@ filtered_orders.then((result) => {
     })
     
   }
+
 
 
   return (
