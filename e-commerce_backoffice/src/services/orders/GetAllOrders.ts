@@ -1,6 +1,6 @@
 import React from 'react';
 import { Order } from '../../models/Order';
-import orders from '../../assets/json/orders.json';
+import orders from '../../data/json/orders.json';
 
 
 function GetAllOrders(){

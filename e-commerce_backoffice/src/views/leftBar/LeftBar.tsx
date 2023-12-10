@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import '../css/leftBar.css';
+import './leftBar.css';
 
 interface MenuItem {
   text: string;

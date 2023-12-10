@@ -1,5 +1,5 @@
 import React from 'react'
-import shippings_method from '../../assets/json/shipping_methods.json';
+import shippings_method from '../../data/json/shipping_methods.json';
 
 class ShippingMethodService{
     async getShippingMethods() {
