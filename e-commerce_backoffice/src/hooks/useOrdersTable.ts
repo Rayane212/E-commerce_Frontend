@@ -1,9 +1,9 @@
 import React from 'react'
-import { Order } from '../../models/Order';
-import GetAllOrders from './GetAllOrders';
-import FilterOrders from './FilterOrders';
-import OrdersResearch from './OrdersResearch';
-import OrderSort from './OrderSort';
+import { Order } from '../models/orders/Order';
+import GetAllOrders from '../services/orders/GetAllOrders';
+import FilterOrders from '../services/orders/FilterOrders';
+import OrdersResearch from '../services/orders/OrdersResearch';
+import OrderSort from '../services/orders/OrderSort';
 
 class useOrdersTable{
   async GetOrders(){

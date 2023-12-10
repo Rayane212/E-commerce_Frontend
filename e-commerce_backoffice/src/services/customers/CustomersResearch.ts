@@ -1,5 +1,5 @@
 import FormatDate from '../general/FormatDate';
-import { Customer } from '../../models/Customer';
+import { Customer } from '../../models/customers/Customer';
 
 function CustomersResearch(list: Customer[], search: string) {
   let customerSearch: Customer[] = [];

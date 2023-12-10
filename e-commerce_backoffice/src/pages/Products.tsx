@@ -1,7 +1,5 @@
 import React from 'react'
-import ProductsHeader from '../views/products/ProductsHeader'
 import ProductsRecap from '../views/products/ProductsRecap';
-import ProductsFilter from '../views/products/ProductsFilter';
 import ProductsTable from '../views/products/ProductsTable';
 import PageHeader from '../views/general/PageHeader';
 

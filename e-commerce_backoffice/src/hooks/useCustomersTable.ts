@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useCallback } from 'react'
-import { Customer } from '../../models/Customer';
-import GetAllCustomers from './GetAllCustomers';
-import FilterCustomers from './FilterCustomers';
-import CustomerSort from './CustomerSort';
-import CustomersResearch from './CustomersResearch';
+import { Customer } from '../models/customers/Customer';
+import GetAllCustomers from '../services/customers/GetAllCustomers';
+import FilterCustomers from '../services/customers/FilterCustomers';
+import CustomerSort from '../services/customers/CustomerSort';
+import CustomersResearch from '../services/customers/CustomersResearch';
 
 
 class useCustomersTable{

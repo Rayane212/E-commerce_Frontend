@@ -1,4 +1,4 @@
-import { Order } from '../../models/Order';
+import { Order } from '../../models/orders/Order';
 
 export default function FilterOrders(data: Order[]) {
   const all_orders = data;

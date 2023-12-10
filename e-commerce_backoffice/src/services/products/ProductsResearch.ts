@@ -1,69 +1,78 @@
 import { Product } from '../../models/Product';
 
 function ProductsResearch(list: Product[], search: string) {
-  let customerSearch: Product[] = [];
+  let productSearch: Product[] = [];
   let isResult: boolean = false;
   try {
-    if (search === '') {
-      setOrderSearch(list);
-    } 
-    else {
-        const value = parseInt(search);
-        if (isNaN(value)){ // Client
-            const result = clientResearch(search);
-            !result ? setIsResult(false) : setIsResult(true);
+      const value = parseInt(search);
+      if (isNaN(value)){ // Produit ou Marque/Fournisseur
+        const result_name = productNameSearch(search);
+        const result_brand = productBrandSearch(search);
+        if (!result_name && !result_brand) {
+          setIsResult(false);
         }
-        else{ // Id
-            const result = customerIdResearch(search);
-            !result ? setIsResult(false): setIsResult(true);
+        else{
+          setIsResult(true);
         }
-    }
+      }
+      else{ // Id
+          const result = productIDSearch(search);
+          !result ? setIsResult(false): setIsResult(true);
+      }
   } 
   catch (error) {
-    console.log(error);
+    console.error(error);
   }
     
     function setIsResult(value: boolean) {
       isResult = value;
     }
-    function setOrderSearch(value: Product[]) {
-      customerSearch = value;
+    function setProductSearch(value: Product[]) {
+      productSearch = value;
     }
-    function clientResearch(value: string) {
-        const customersResearch: Product[] = list.filter(customer =>
-          customer.title.toLowerCase().includes(value.toLowerCase())
-        );
-        if (customersResearch.length === 0) {
-          setIsResult(false);
-        }else{
-          updateOrderSearch(customersResearch);
-          return customersResearch
-        }
-      }
-    function customerIdResearch(value: string) {
-      const customersResearch: Product[] = list.filter(customer =>
-        customer.id.toString().includes(value)
+
+    function productNameSearch(value: string) {
+      const productsResearch: Product[] = list.filter(product =>
+        product.title.toLowerCase().includes(value.toLowerCase())
       );
-      if (customersResearch.length === 0) {
-        return false;
-      }else{
-      updateOrderSearch(customersResearch);
-      return customersResearch;
+      if (productsResearch.length === 0) {
+        setIsResult(false);
+      }
+      else{
+        setProductSearch(productsResearch);
+        return productsResearch;
       }
     }
-    
-    function updateOrderSearch(customersResearch: Product[]) {
-      if (customersResearch.length === 0) {
+    function productBrandSearch(value: string) {
+      const productsResearch: Product[] = list.filter(product =>
+        product.supplier.toLowerCase().includes(value.toLowerCase())
+      );
+      if (productsResearch.length === 0) {
         setIsResult(false);
-        return customersResearch;
-      } else {
-        setIsResult(true);
-        setOrderSearch(customersResearch);
+      }
+      else{
+        setProductSearch(productsResearch);
+        return productsResearch;
+      }
+    }
+    function productIDSearch(value: string) {
+      const productsResearch: Product[] = list.filter(product =>
+        product.id.toString().includes(value)
+      );
+      if (productsResearch.length === 0) {
+        return false;
+      }
+      else{
+        setProductSearch(productsResearch);
+        return productsResearch;
       }
     }
     
     if (isResult) {
-      return customerSearch;
+      return productSearch;
+    }
+    else{
+      return false;
     }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Order } from '../../models/Order'
+import { Order } from '../../models/orders/Order'
 
 export default function OrderSort(list: Order[], by:string, order:string) {
     const sortedOrders = list.slice().sort((a: Order, b: Order) => {

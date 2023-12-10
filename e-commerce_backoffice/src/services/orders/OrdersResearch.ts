@@ -1,4 +1,4 @@
-import { Order } from '../../models/Order';
+import { Order } from '../../models/orders/Order';
 import FormatDate from '../general/FormatDate';
 
 function OrdersResearch(list: Order[], search: string) {

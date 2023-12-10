@@ -7,7 +7,7 @@ const TableTitle: React.FC<{list:string[]}> = ({ list }) => {
     <thead>
         <tr className='table_header'>
             {list.map((item: string) => (
-                <td className="tg-ycr8 border-right">{item}</td>
+                <td className="tg-ycr8 border-right" key={item}>{item}</td>
             ))}
         </tr>
     </thead>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import { Order} from '../../models/Order';
+import { Order} from '../../models/orders/Order';
 import GetAllOrders from './GetAllOrders';
 import FormatDate from '../general/FormatDate';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Order } from '../../models/Order';
+import { Order } from '../../models/orders/Order';
 import orders from '../../data/json/orders.json';
 
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Order } from '../../models/Order';
+import { Order } from '../../models/orders/Order';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SortOptions from '../general/SortOptions';
 import NoResult from '../general/NoResult';
 import TableTitle from '../general/TableTitle';
 import TableList from '../general/TableList';
-import useOrdersTable from '../../services/orders/useOrdersTable';
+import useOrdersTable from '../../hooks/useOrdersTable';
 
 type OrderState = {
   orders: Order[];
@@ -220,7 +220,7 @@ filtered_orders.then((result) => {
             <div className='results'>
                 <table className='tg'>
                     <TableTitle list={tableHeaders}/>
-                    {state?.showList ? <TableList customers={[]} orders={state?.orders}/>: null}
+                    {state?.showList ? <TableList customers={[]} orders={state?.orders} products={[]}/>: null}
                 </table>
                 {!state?.showList ? <NoResult/> : null}
             </div>

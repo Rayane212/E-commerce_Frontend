@@ -1,15 +1,16 @@
 import React from 'react';
 import { TableListProps } from '../../models/TableListProps'
-import { Customer } from '../../models/Customer';
-import { Order } from '../../models/Order';
+import { Customer } from '../../models/customers/Customer';
+import { Order } from '../../models/orders/Order';
+import { Product } from '../../models/Product';
 
 
 
 
 
-const TableList: React.FC<TableListProps> = ({ customers, orders }) => {
+const TableList: React.FC<TableListProps> = ({ customers, orders, products }) => {
   const currency: string[] = ["euro", "EUR", "€"];
-  if (customers.length !== 0 && orders.length === 0){
+  if (customers.length !== 0 && products.length === 0 && orders.length === 0){
     return (
       <tbody>
         <>
@@ -28,7 +29,7 @@ const TableList: React.FC<TableListProps> = ({ customers, orders }) => {
       </tbody>
     )
   }
-  else if (orders.length !==0 && customers.length === 0){
+  else if (orders.length !==0 && products.length === 0 && customers.length === 0){
     return (
       <tbody>
         <>
@@ -47,6 +48,25 @@ const TableList: React.FC<TableListProps> = ({ customers, orders }) => {
                 {item.statut ? "Livré" : "Non Livré"}
               </td> 
           </tr>
+          ))}
+        </>
+      </tbody>
+    )
+  }
+  else if (products.length !==0 && orders.length === 0 && customers.length === 0){
+    return (
+      <tbody>
+        <>
+          {products.map((item: Product) => (
+            <tr className='result_row' key={item.id}>
+              <td className="tg-ycr8">{item.id}</td>
+              <td className="tg-ycr8">{item.title}</td> 
+              <td className="tg-ycr8">{item.stock}</td> 
+              <td className="tg-ycr8">{item.available ? "Disponible" : "Indisponible"}</td>  
+              <td className="tg-ycr8">{item.price_on_sale}{currency[2]}</td> 
+              <td className="tg-ycr8">{item.price_regular}{currency[2]}</td> 
+              <td className="tg-ycr8">{item.supplier}</td> 
+            </tr>
           ))}
         </>
       </tbody>

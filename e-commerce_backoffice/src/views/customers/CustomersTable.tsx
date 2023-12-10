@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { Customer } from '../../models/Customer';
+import { Customer } from '../../models/customers/Customer';
 import TableList from '../general/TableList';
 import NoResult from '../general/NoResult';
-import useCustomersTable from '../../services/customers/useCustomersTable';
+import useCustomersTable from '../../hooks/useCustomersTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TableTitle from '../general/TableTitle';
 import SortOptions from '../general/SortOptions';
@@ -196,7 +196,7 @@ export default function CustomersTable() {
                 <div className='results'>
                     <table className='tg'>
                         <TableTitle list={tableHeaders}/>
-                        {state?.showList ? <TableList customers={state?.customers} orders={[]}/>: null}
+                        {state?.showList ? <TableList customers={state?.customers} orders={[]} products={[]}/>: null}
                     </table>
                     {!state?.showList ? <NoResult/> : null}
                 </div>

@@ -9,7 +9,7 @@ const SortOptions: React.FC<SortOptionsProps> = ({ list }) => {
   return (
     <>
     {Object.keys(list).map((item: string) => (
-        <option value={item}> {list[item]}</option>
+        <option value={item} key={item}> {list[item]}</option>
     ))}
     </>
   );

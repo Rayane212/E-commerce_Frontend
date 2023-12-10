@@ -1,6 +1,6 @@
 import React from 'react'
 import customers from '../../data/json/customers.json';
-import { Customer } from '../../models/Customer';
+import { Customer } from '../../models/customers/Customer';
 
 let isRequest : boolean = false;
 
