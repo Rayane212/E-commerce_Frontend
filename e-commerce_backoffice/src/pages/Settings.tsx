@@ -1,6 +1,6 @@
 import React from 'react';
-import SettingsHeader from '../../views/settings/SettingsHeader';
-import GeneralSettings from './settings/GeneralSettings';
+import SettingsHeader from '../views/settings/SettingsHeader';
+import GeneralSettings from '../views/settings/GeneralSettings';
 import '../css/settings.css'
 
 function Settings() {

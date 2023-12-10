@@ -1,9 +1,9 @@
 import React from 'react'
 import '../../assets/css/order.css';
-import OrdersRecap from './OrdersRecap'
-import OrdersTable from '../../assets/tsx/orders/OrdersTable'
-import CreateOrderForm from './CreateOrderForm';
-import PageHeader from '../general/PageHeader';
+import OrdersRecap from '../views/orders/OrdersRecap'
+import OrdersTable from '../views/orders/OrdersTable'
+import CreateOrderForm from '../views/orders/CreateOrderForm';
+import PageHeader from '../views/general/PageHeader';
 
 export default function Orders() {
   return (

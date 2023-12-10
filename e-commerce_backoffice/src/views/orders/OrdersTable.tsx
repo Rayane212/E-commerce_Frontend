@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Order } from '../../../models/Order';
+import { Order } from '../../models/Order';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SortOptions from '../../../views/general/SortOptions';
-import NoResult from '../../../views/NoResult';
-import TableTitle from '../../../views/general/TableTitle';
-import TableList from '../../../views/general/TableList';
-import useOrdersTable from '../../../services/orders/useOrdersTable';
+import SortOptions from '../general/SortOptions';
+import NoResult from '../general/NoResult';
+import TableTitle from '../general/TableTitle';
+import TableList from '../general/TableList';
+import useOrdersTable from '../../services/orders/useOrdersTable';
 
 type OrderState = {
   orders: Order[];

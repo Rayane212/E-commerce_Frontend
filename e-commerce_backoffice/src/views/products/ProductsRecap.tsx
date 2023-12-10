@@ -1,6 +1,6 @@
 import React from 'react'
-import GetAllProducts from '../../../services/products/GetAllProducts'
-import FilterProducts from '../../../services/products/FilterProducts';
+import GetAllProducts from '../../services/products/GetAllProducts'
+import FilterProducts from '../../services/products/FilterProducts';
 
 export default function ProductsRecap() {
     const all_products = GetAllProducts();

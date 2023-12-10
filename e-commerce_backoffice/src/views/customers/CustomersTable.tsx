@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import { Customer } from '../../../models/Customer';
-import TableList from '../../../views/general/TableList';
-import NoResult from '../../../views/NoResult';
-import useCustomersTable from '../../../services/customers/useCustomersTable';
+import { Customer } from '../../models/Customer';
+import TableList from '../general/TableList';
+import NoResult from '../general/NoResult';
+import useCustomersTable from '../../services/customers/useCustomersTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import TableTitle from '../../../views/general/TableTitle';
-import SortOptions from '../../../views/general/SortOptions';
+import TableTitle from '../general/TableTitle';
+import SortOptions from '../general/SortOptions';
 
 
 type CustomerState = {
@@ -73,6 +73,7 @@ export default function CustomersTable() {
                     selectedOption: state?.selectedOption as string,
                     showList: true
                 })
+                reinit_sort()
             }
             if (result === false){
                 setState({
@@ -81,6 +82,7 @@ export default function CustomersTable() {
                     selectedOption: state?.selectedOption as string,
                     showList: false
                 })
+                reinit_sort()
             }
         })
         
@@ -96,10 +98,8 @@ export default function CustomersTable() {
         select.value = 'id_asc';
     }
 
-    const filter__view = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        const element = e.target as HTMLButtonElement;
-        const data_list_element = element.dataset.list;
-        const data_list = filtered_data[data_list_element as keyof typeof filtered_data];
+    const filter__view = (list:string) => {
+        const data_list = filtered_data[list as keyof typeof filtered_data];
         if (data_list !== undefined) {
             setState({
                 customers: data_list as Customer[],
@@ -155,16 +155,16 @@ export default function CustomersTable() {
                     <thead>
                         <tr>
                             <td className="tg-ycr8">
-                                <button className='filter__btn btn' id="all_customers__btn" data-list="all_customers" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => filter__view(e)}>Tous les clients</button>
+                                <button className='filter__btn btn' id="all_customers__btn" data-list="all_customers" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => filter__view("all_customers")}>Tous les clients</button>
                             </td>
                             <td className="tg-ycr8">
-                                <button className='filter__btn btn' id="buy_customers__btn" data-list="buy_customers" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => filter__view(e)}>Clients qui ont commandé</button>
+                                <button className='filter__btn btn' id="buy_customers__btn" data-list="buy_customers" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => filter__view("buy_customers")}>Clients qui ont commandé</button>
                             </td>
                             <td className="tg-ycr8">
-                                <button className='filter__btn btn' id="suscribers_customers__btn" data-list="suscribers_customers" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => filter__view(e)} >Clients Abonnés</button>
+                                <button className='filter__btn btn' id="suscribers_customers__btn" data-list="suscribers_customers" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => filter__view("suscribers_customers")} >Clients Abonnés</button>
                             </td>
                             <td className="tg-0lax">
-                                <button className='filter__btn btn' id="unsuscribers_customers__btn" data-list="unsuscribers_customers" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => filter__view(e)} >Clients Non-Abonnés</button>
+                                <button className='filter__btn btn' id="unsuscribers_customers__btn" data-list="unsuscribers_customers" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => filter__view("unsuscribers_customers")} >Clients Non-Abonnés</button>
                             </td>
                         </tr>
                     </thead>

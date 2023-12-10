@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../assets/css/customers.css';
-import PageHeader from '../general/PageHeader';
-import Customers_Recap from './Customers_Recap';
-import CustomersTable from '../../assets/tsx/customers/CustomersTable';
+import PageHeader from '../views/general/PageHeader';
+import Customers_Recap from '../views/customers/Customers_Recap';
+import CustomersTable from '../views/customers/CustomersTable';
 
 function Customers(){
   return (
