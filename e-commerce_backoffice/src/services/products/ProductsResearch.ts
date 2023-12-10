@@ -1,4 +1,4 @@
-import { Product } from '../../models/Product';
+import { Product } from '../../models/products/Product';
 
 function ProductsResearch(list: Product[], search: string) {
   let productSearch: Product[] = [];

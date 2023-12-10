@@ -1,4 +1,4 @@
-import { Product } from '../../models/Product';
+import { Product } from '../../models/products/Product';
 
 export default function FilterProducts(data: Product[]) {
   const all_products = data;

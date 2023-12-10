@@ -1,5 +1,5 @@
 import React from 'react'
-import { Product } from '../../models/Product';
+import { Product } from '../../models/products/Product';
 
 export default function CustomerSort(list: Product[], by:string, order:string) {
     const sortedProducts = list.slice().sort((a: Product, b: Product) => {

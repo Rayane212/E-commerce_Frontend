@@ -2,7 +2,7 @@ import React from 'react';
 import { TableListProps } from '../../models/TableListProps'
 import { Customer } from '../../models/customers/Customer';
 import { Order } from '../../models/orders/Order';
-import { Product } from '../../models/Product';
+import { Product } from '../../models/products/Product';
 
 
 

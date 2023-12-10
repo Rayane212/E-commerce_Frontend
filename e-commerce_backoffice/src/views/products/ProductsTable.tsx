@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react'
-import { Product } from '../../models/Product';
+import { Product } from '../../models/products/Product';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TableTitle from '../general/TableTitle';
 import TableList from '../general/TableList';

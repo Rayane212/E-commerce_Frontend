@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback } from 'react'
-import { Product } from '../models/Product';
+import { Product } from '../models/products/Product';
 import GetAllProducts from '../services/products/GetAllProducts';
 import FilterProducts from '../services/products/FilterProducts';
 import ProductsResearch from '../services/products/ProductsResearch';
