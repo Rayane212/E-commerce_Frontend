@@ -1,0 +1,18 @@
+.infos_container{
+    margin: 5px;
+}
+
+.shop_infos_read{
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.infos_container > div{
+    display: flex;
+    align-items: center;
+    margin: 10px; 
+}
+.infos_container > div > div{
+    margin-right: 10px;
+    padding: 10px;
+}

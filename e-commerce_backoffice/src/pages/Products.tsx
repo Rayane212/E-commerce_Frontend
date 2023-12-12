@@ -11,6 +11,8 @@ export default function Products() {
         link='create_product'
         isButton={true}
         buttonTitle='Créer un produit'
+        isSelect={false}
+        optionsList={{}}
       />
         <ProductsRecap/>
         <div className='products_container'>

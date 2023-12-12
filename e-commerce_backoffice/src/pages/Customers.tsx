@@ -12,6 +12,8 @@ function Customers(){
         link='create_customer'
         isButton={true}
         buttonTitle='Créer un client'
+        isSelect={false}
+        optionsList={{}}
       />
       <Customers_Recap/>
       <div className='table_container'>

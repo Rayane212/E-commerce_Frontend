@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TableTitle from '../general/TableTitle';
 import TableList from '../general/TableList';
 import NoResult from '../general/NoResult';
-import SortOptions from '../general/SortOptions';
+import MapOptions from '../general/MapOptions';
 import useProductsTable from '../../hooks/useProductsTable';
 
 type ProductState = {
@@ -194,7 +194,7 @@ export default function CustomersTable() {
                                 </a>
                                 <div className='pop_up_sort sort_fields_container'>
                                     <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => sort_view(e)} id='sort_select'>
-                                        <SortOptions list={optionList}/>
+                                        <MapOptions list={optionList}/>
                                     </select>
                                 </div>
                             </td>  

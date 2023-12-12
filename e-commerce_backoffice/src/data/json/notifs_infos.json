@@ -1,0 +1,8 @@
+{
+    "new_sales": true,
+    "refunds": true,
+    "delivered_orders": true,
+    "order_issues": true,
+    "settings_changes": true,
+    "new_employees": true
+}

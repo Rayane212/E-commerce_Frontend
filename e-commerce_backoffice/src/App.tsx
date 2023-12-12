@@ -13,7 +13,7 @@ const App: FC = () => {
   return (
     <div className="App">
      <LeftBar/>
-     <Products />
+     <Settings />
     </div>
   );
 }

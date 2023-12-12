@@ -3,4 +3,6 @@ export interface HeaderProps {
     link: string;
     isButton: boolean;
     buttonTitle: string;
+    isSelect: boolean;
+    optionsList: Record<string, string>;
   }

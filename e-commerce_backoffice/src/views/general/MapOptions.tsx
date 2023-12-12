@@ -1,10 +1,7 @@
 import React from 'react';
+import { SelectProps } from '../../models/SelectProps';
 
-interface SortOptionsProps {
-  list: Record<string, string>;
-}
-
-const SortOptions: React.FC<SortOptionsProps> = ({ list }) => {
+const MapOptions: React.FC<SelectProps> = ({ list }) => {
 
   return (
     <>
@@ -15,4 +12,4 @@ const SortOptions: React.FC<SortOptionsProps> = ({ list }) => {
   );
 };
 
-export default SortOptions;
+export default MapOptions;

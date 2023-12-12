@@ -13,6 +13,8 @@ export default function Orders() {
         link='create_order'
         isButton={true}
         buttonTitle='Créer une commande'
+        isSelect={false}
+        optionsList={{}}
       />
         <CreateOrderForm/>
         <OrdersRecap/>
