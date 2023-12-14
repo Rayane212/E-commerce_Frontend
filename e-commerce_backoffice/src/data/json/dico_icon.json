@@ -1,0 +1,20 @@
+{
+    "shop_name": "store",
+    "shop_description": "align-justify",
+    "shop_currency": "money-bill",
+    "shop_language": "language",
+    "shop_timezone": "clock",
+    "shop_weight_unit": "weight-hanging",
+    "shop_metric_unit": "up-right-and-down-left-from-center",
+    "shop_email": "at",
+    "shop_phone": "phone",
+    "shop_adress": "location-dot",
+    "shop_opening_hours": "clock",
+    "new_sales": "coins",
+    "refunds": "rotate-left",
+    "delivered_orders": "truck",
+    "order_issues": "exclamation",
+    "settings_changes": "gears",
+    "new_employees": "user-plus",
+    "shop_available": "eye"
+}

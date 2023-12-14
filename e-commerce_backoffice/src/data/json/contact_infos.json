@@ -1,6 +1,7 @@
 {
-    "shop_email": "",
-    "shop_phone": "",
+    "shop_email": "contact@boutique.com",
+    "shop_phone": "0612345678",
+    "shop_opening_hours": "Du lundi au vendredi de 9h à 18h",
     "shop_address_number": "2",
     "shop_address_street": "place de l'Europe",
     "shop_address_zipcode": "31000",

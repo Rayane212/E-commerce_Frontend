@@ -1,0 +1,20 @@
+{
+    "new_sales": "Nouvelles Ventes",
+    "refunds": "Remboursements/Retours",
+    "delivered_orders": "Commandes Livrées",
+    "order_issues": "Problèmes sur les Commandes",
+    "settings_changes": "Changements de paramètres",
+    "new_employees": "Nouveaux Employés",
+    "shop_name": "Nom de la boutique",
+    "shop_description": "Description de la boutique",
+    "shop_currency": "Devise de la boutique",
+    "shop_language": "Langue de la boutique",
+    "shop_available": "Disponibilité de la boutique",
+    "shop_timezone": "Fuseau Horaire",
+    "shop_weight_unit": "Unité de poids",
+    "shop_metric_unit": "Unité de mesure",
+    "shop_email": "Adresse email de la boutique",
+    "shop_phone": "Numéro de la boutique",
+    "shop_adress": "Adresse de la boutique",
+    "shop_opening_hours": "Horaires d'ouverture"
+}

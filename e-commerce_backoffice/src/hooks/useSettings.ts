@@ -2,6 +2,8 @@ import React from 'react'
 import GetGeneralInfos from '../services/settings/GetGeneralInfos'
 import GetContactInfos from '../services/settings/GetContactInfos'
 import GetNotificationsInfos from '../services/settings/GetNotificationsInfos'
+import GetDicoText from '../services/settings/GetDicoText'
+import GetDicoIcon from '../services/settings/GetDicoIcon'
 
 class useSettings{
   async getGeneralShopInfos(){
@@ -26,6 +28,16 @@ class useSettings{
       notificationsInfos
     }
     return shopInfos
+  }
+  getDicoText(){
+    const dicoText = GetDicoText()
+    return dicoText
+  }
+  getDicoIcon(){
+    const dicoIcon = GetDicoIcon()
+    if (dicoIcon !== undefined){
+      return dicoIcon
+    }
   }
 }
 

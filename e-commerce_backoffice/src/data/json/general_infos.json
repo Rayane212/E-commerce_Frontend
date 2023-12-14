@@ -1,10 +1,11 @@
 {
     "shop_name": "Bullshit", 
-    "shop_description": "Bullshit is a bullshit shop",
-    "shop_logo_url": "http://www.bullshit.com/logo.png",
+    "shop_description": "Bullshit is a e-commerce website",
+    "shop_available": true,
     "shop_timezone": "Europe/Paris",
     "shop_currency": "EUR",
-    "shop_country": "FR",
-    "shop_language": "fr",
-    "shop_weight_unit": "kg"
+    "shop_country": "France",
+    "shop_language": "Français",
+    "shop_weight_unit": "kg", 
+    "shop_metric_unit": "Système métrique"
 }

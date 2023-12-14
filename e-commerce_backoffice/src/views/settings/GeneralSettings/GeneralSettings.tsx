@@ -1,23 +1,62 @@
 import React, { useEffect } from 'react'
+import './general_settings.css';
 import useSettings from '../../../hooks/useSettings';
 import { NotifsInfos } from '../../../models/settings/NotifsInfos';
 import { GeneralInfos } from '../../../models/settings/GeneralInfos';
 import { ContactInfos } from '../../../models/settings/ContactInfos';
 import { ShopInfos } from '../../../models/settings/ShopInfos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './general_settings.css';
-
+import { IconName } from '@fortawesome/fontawesome-svg-core';
+import MapSettings from '../MapSettings';
 
 
 export default function GeneralSettings() {
     const [shopInfos, setShopInfos] = React.useState<ShopInfos>();
     const [adminNotifs, setAdminNotifs] = React.useState<NotifsInfos>();
     const shopInfosData = useSettings.getShopInfos();
+    const notifsInfosArray = adminNotifs ? Object.entries(adminNotifs as NotifsInfos) : [];
+    const shopInfosArray = shopInfos ? Object.entries(shopInfos as ShopInfos) : [];
+    const dicoText: { [key: string]: string } = useSettings.getDicoText() as { [key: string]: string };
+    const dicoIcon: { [key: string]: string } = useSettings.getDicoIcon() as { [key: string]: string };
+    const shop_adress_text = shopInfos ? shopInfos?.shop_address_number + ' ' + shopInfos?.shop_address_street + ', ' + shopInfos?.shop_address_zipcode + ' ' + shopInfos?.shop_address_city + ', ' + shopInfos.shop_address_state + ' ' + shopInfos.shop_address_country: '';
+    const sections = {
+        'profil': {
+            "title": "Profil",
+            "data-show-btn": "profil_setting_container",
+            "settings_container_id": "profil_settings_container",
+            "list_1": shopInfosArray?.slice(0, 2),
+            "list_2": shopInfosArray?.slice(2, 4)
+        }, 
+        "contact": {
+            "title": "Contact",
+            "data-show-btn": "contact_setting_container",
+            "settings_container_id": "contact_settings_container",
+            "list_1": shopInfosArray?.slice(4, 6),
+            "list_2": shopInfosArray?.slice(6, 7).concat(Object.entries({'shop_adress' :  shop_adress_text})),
+        },
+        "others": {
+            "title": "Autres Paramètres",
+            "data-show-btn": "others_setting_container",
+            "settings_container_id": "others_settings_container",
+            "list_1": shopInfosArray?.slice(13, 15),
+            "list_2": shopInfosArray?.slice(15, 17),
+        },
+        'notifs': {
+            "title": "Notifications",
+            "data-show-btn": "notifs_setting_container",
+            "settings_container_id": "notifs_settings_container",
+            "list_1": notifsInfosArray?.slice(0, 3),
+            "list_2": notifsInfosArray?.slice(3, 6),
+        },
+    }
+    
     let shopInfosVar : ShopInfos = {
         shop_name: '',
         shop_description: '',
-        shop_logo_url: '',
+        shop_available: false,
+        shop_language: '',
         shop_email: '',
+        shop_opening_hours: '',
         shop_phone: '',
         shop_address_number: '',
         shop_address_street: '',
@@ -25,10 +64,10 @@ export default function GeneralSettings() {
         shop_address_city: '',
         shop_address_country: '',
         shop_address_state: '',
-        shop_language: '',
         shop_currency: '',
         shop_timezone: '',
         shop_weight_unit: '',
+        shop_metric_unit: '',
     };
     let adminNotifsVar : NotifsInfos = {
         new_sales: false,
@@ -38,6 +77,7 @@ export default function GeneralSettings() {
         settings_changes: false,
         new_employees: false,
     }
+
 
     shopInfosData.then((data) => {
         const general_infos = data.generalInfos as GeneralInfos; 
@@ -50,9 +90,10 @@ export default function GeneralSettings() {
     function changeShopInfos(general : GeneralInfos, contact : ContactInfos){
         shopInfosVar.shop_name = general.shop_name;
         shopInfosVar.shop_description = general.shop_description;
-        shopInfosVar.shop_logo_url = general.shop_logo_url;
+        shopInfosVar.shop_available = general.shop_available;
         shopInfosVar.shop_email = contact.shop_email;
         shopInfosVar.shop_phone = contact.shop_phone;
+        shopInfosVar.shop_opening_hours = contact.shop_opening_hours;
         shopInfosVar.shop_address_number = contact.shop_address_number;
         shopInfosVar.shop_address_street = contact.shop_address_street;
         shopInfosVar.shop_address_zipcode = contact.shop_address_zipcode;
@@ -63,6 +104,7 @@ export default function GeneralSettings() {
         shopInfosVar.shop_currency = general.shop_currency;
         shopInfosVar.shop_timezone = general.shop_timezone;
         shopInfosVar.shop_weight_unit = general.shop_weight_unit == 'kg' ? 'Kilogrammes' : 'Grammes';
+        shopInfosVar.shop_metric_unit = general.shop_metric_unit;
     }
     function changeNotifsInfos(notifs : NotifsInfos){
         adminNotifsVar.new_sales = notifs.new_sales;
@@ -90,153 +132,32 @@ export default function GeneralSettings() {
         setAdminNotifs(adminNotifsVar);
     }, [])
 
+    
+
   return (
     <div className='generalSettings_container'>
         <h2>Paramètres Généraux</h2>
-        <div className='section_settings_container'>
-            <div className='profilSettings_header'>
-                <h3>Profil</h3>
-                <button className='button btn modif_btn' data-show='profil_setting_container'>Modifier</button>
-            </div>
-            <div className='settings_container' id='profil_setting_container'>
-                <div className='infos_container'>
-                    <div className='profil_infos_name'>
-                        <div>
-                            <FontAwesomeIcon icon={['fas', 'store']} />
-                        </div>
-                        <div>
-                            <p>Nom de la boutique</p>
-                            <p className='shop_name shop_infos_read'>{shopInfos?.shop_name}</p>
+        {Object.entries(sections).map((data: [string, any]) => {
+            return (
+                <div className='section_settings_container' key={data[0]}>
+                    <div className='settings_container_header'>
+                        <h3>{data[1].title}</h3>
+                        <button className='button btn modif_btn' data-show={data[1]['data-show-btn']} onClick={showFields}>Modifier</button>
+                    </div>
+                    <div className='settings_container' id={data[1]['settings_container_id']}>
+                        <div className='infos_container'>
+                            <div className='infos_container_grid'>
+                                <MapSettings list={data[1].list_1} dicoText={dicoText} dicoIcon={dicoIcon} />
+                            </div>
+                            <div className='infos_container_grid'>
+                                <MapSettings list={data[1].list_2} dicoText={dicoText} dicoIcon={dicoIcon} />
+                            </div>
                         </div>
                     </div>
-                    <div className='profil_infos_timezone'>
-                        <div>
-                            <FontAwesomeIcon icon={['fas', 'clock']} />
-                        </div>
-                        <div>
-                            <p>Fuseau Horaire</p>
-                            <p className='shop_timezone shop_infos_read'>{shopInfos?.shop_timezone}</p>
-                        </div>
-                    </div>
-                    <div className='profil_infos_weight_unit'>
-                        <div>
-                            <FontAwesomeIcon icon={['fas', 'weight-hanging']} />
-                        </div>
-                        <div>
-                            <p>Unité de poids</p>
-                            <p className='shop_weight_unit shop_infos_read'>{shopInfos?.shop_weight_unit}</p>
-                        </div>
-                    </div>
-                    
                 </div>
-                
-                {/* <label form='shop_name'>Nom de la boutique:</label>
-                <input type="text" name="shop_name" id="shop_name" value={shopInfos?.shop_name} placeholder={shopInfos?.shop_name === '' ? 'Nom de la boutique' : shopInfos?.shop_name}/> */}
-                {/* <p>Fuseau Horaire</p>
-                <select id="shop_timezone" name="shop_timezone">
-                    <option value="Europe/Paris">Europe/Paris</option>
-                    <option value="America/New_York">America/New_York</option>
-                    <option value="Asia/Tokyo">Asia/Tokyo</option>
-                </select>
-                <p>Unité de poids</p>
-                <select id="shop_weight_unit" name="shop_weight_unit">
-                    <option value="Kilogrammes">Kilogrammes</option>
-                    <option value="Grammes">Grammes</option>   
-                </select> */}
-            </div>
-        </div>
+            )
+        })}
 
-        <div className='section_settings_container '>
-             <div className='profilSettings_header'>
-                <h3>Contact</h3>
-                <button className='button btn modif_btn' data-show='contact_setting_container' onClick={showFields}>Modifier</button>
-            </div>
-            <div className='infos_container'>
-                    <div className='profil_infos_name'>
-                        <div>
-                            <FontAwesomeIcon icon={['fas', 'store']} />
-                        </div>
-                        <div>
-                            <p>Adresse de la boutique</p>
-                            <p className='shop_name shop_infos_read'>{shopInfos?.shop_name}</p>
-                        </div>
-                    </div>
-                    <div className='profil_infos_timezone'>
-                        <div>
-                            <FontAwesomeIcon icon={['fas', 'clock']} />
-                        </div>
-                        <div>
-                            <p>Fuseau Horaire</p>
-                            <p className='shop_timezone shop_infos_read'>{shopInfos?.shop_timezone}</p>
-                        </div>
-                    </div>
-                    <div className='profil_infos_weight_unit'>
-                        <div>
-                            <FontAwesomeIcon icon={['fas', 'weight-hanging']} />
-                        </div>
-                        <div>
-                            <p>Unité de poids</p>
-                            <p className='shop_weight_unit shop_infos_read'>{shopInfos?.shop_weight_unit}</p>
-                        </div>
-                    </div>
-                    
-                </div>
-            <div className='settings_container pop_up' id='contact_setting_container'>
-                <p>Adresse de la boutique</p>
-                <label form='shop_adress_number'>N°</label>
-                <input type="text" name="shop_address_number" id="shop_address_number"  value={shopInfos?.shop_address_number} placeholder={shopInfos?.shop_address_number === '' ? 'Numéro de Rue' : shopInfos?.shop_address_number}/>
-                <label form='shop_adress_street'>Rue</label>
-                <input type="text" name="shop_address_street" id="shop_address_street"  value={shopInfos?.shop_address_number} placeholder={shopInfos?.shop_address_number === '' ? 'Nom de Rue' : shopInfos?.shop_address_number}/>
-                <label form='shop_email'>Adresse email</label>
-                <input type="text" name="shop_email" id="shop_email"  value={shopInfos?.shop_email} placeholder={shopInfos?.shop_email === '' ? 'E-mail de la boutique' : shopInfos?.shop_email}/>
-                <label form='shop_phone'>Numéro de téléphone</label>
-                <input type="text" name="shop_phone" id="shop_phone"  value={shopInfos?.shop_phone} placeholder={shopInfos?.shop_phone === '' ? 'Numéro de la boutique' : shopInfos?.shop_phone}/>
-            </div>
-        </div>
-
-        <div className='section_settings_container '>
-            <div className='profilSettings_header'>
-                <h3>Notifications</h3>
-                <button className='button btn modif_btn' data-show='notifications_setting_container' onClick={showFields}>Modifier</button>
-            </div>
-            <p>Vous pouvez changer ici les paramètres liés aux notifications que vous recevez. Décidez quels messages vous souhaitez recevoir.</p>
-            <div className='settings_container pop_up' id='notifications_setting_container'>
-                <p>Nouvelles Ventes</p>
-                <select>
-                    <option value="true">Oui</option>
-                    <option value="false">Non</option>
-                </select>
-                <p>Remboursements/Retours</p>
-                <select>
-                    <option value="true">Oui</option>
-                    <option value="false">Non</option>
-                </select>
-                <p>Commandes Livrées</p>
-                <select>
-                    <option value="true">Oui</option>
-                    <option value="false">Non</option>
-                </select>
-                <p>Problèmes sur les Commandes</p>
-                <select>
-                    <option value="true">Oui</option>
-                    <option value="false">Non</option>
-                </select>
-                <p>Changements de paramètres</p>
-                <select>
-                    <option value="true">Oui</option>
-                    <option value="false">Non</option>
-                </select>
-                <p>Nouveaux Employés</p>
-                <select>
-                    <option value="true">Oui</option>
-                    <option value="false">Non</option>
-                </select>
-            </div>
-        </div>
-
-        <div className='btn_container'>
-            <button className='button btn'>Enregistrer</button>
-        </div>
 
     </div>
   )
