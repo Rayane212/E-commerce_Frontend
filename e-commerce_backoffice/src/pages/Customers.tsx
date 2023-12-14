@@ -13,6 +13,7 @@ function Customers(){
         isButton={true}
         buttonTitle='Créer un client'
         isSelect={false}
+        isRecord={true}
         optionsList={{}}
       />
       <Customers_Recap/>

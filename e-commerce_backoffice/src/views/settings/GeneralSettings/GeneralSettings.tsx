@@ -5,8 +5,6 @@ import { NotifsInfos } from '../../../models/settings/NotifsInfos';
 import { GeneralInfos } from '../../../models/settings/GeneralInfos';
 import { ContactInfos } from '../../../models/settings/ContactInfos';
 import { ShopInfos } from '../../../models/settings/ShopInfos';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconName } from '@fortawesome/fontawesome-svg-core';
 import MapSettings from '../MapSettings';
 
 
@@ -49,7 +47,7 @@ export default function GeneralSettings() {
             "list_2": notifsInfosArray?.slice(3, 6),
         },
     }
-    
+
     let shopInfosVar : ShopInfos = {
         shop_name: '',
         shop_description: '',
@@ -157,8 +155,6 @@ export default function GeneralSettings() {
                 </div>
             )
         })}
-
-
     </div>
   )
 }

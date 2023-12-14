@@ -12,6 +12,7 @@ export default function Products() {
         isButton={true}
         buttonTitle='Créer un produit'
         isSelect={false}
+        isRecord={true}
         optionsList={{}}
       />
         <ProductsRecap/>

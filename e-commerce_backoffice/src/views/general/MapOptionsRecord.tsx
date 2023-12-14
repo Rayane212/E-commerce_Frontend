@@ -1,8 +1,7 @@
 import React from 'react';
 import { SelectProps } from '../../models/SelectProps';
 
-const MapOptions: React.FC<SelectProps> = ({ list }) => {
-
+const MapOptionsRecord: React.FC<SelectProps> = ({ list }) => {
   return (
     <>
     {Object.keys(list).map((item: string) => (
@@ -12,4 +11,4 @@ const MapOptions: React.FC<SelectProps> = ({ list }) => {
   );
 };
 
-export default MapOptions;
+export default MapOptionsRecord;

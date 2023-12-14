@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TableTitle from '../general/TableTitle';
 import TableList from '../general/TableList';
 import NoResult from '../general/NoResult';
-import MapOptions from '../general/MapOptions';
+import MapOptions from '../general/MapOptionsRecord';
 import useProductsTable from '../../hooks/useProductsTable';
 
 type ProductState = {

@@ -5,7 +5,7 @@ import NoResult from '../general/NoResult';
 import useCustomersTable from '../../hooks/useCustomersTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TableTitle from '../general/TableTitle';
-import MapOptions from '../general/MapOptions';
+import MapOptions from '../general/MapOptionsRecord';
 
 
 type CustomerState = {

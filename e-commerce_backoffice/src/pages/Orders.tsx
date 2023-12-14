@@ -14,6 +14,7 @@ export default function Orders() {
         isButton={true}
         buttonTitle='Créer une commande'
         isSelect={false}
+        isRecord={true}
         optionsList={{}}
       />
         <CreateOrderForm/>

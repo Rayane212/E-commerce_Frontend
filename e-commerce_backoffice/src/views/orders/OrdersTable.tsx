@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Order } from '../../models/orders/Order';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import MapOptions from '../general/MapOptions';
+import MapOptions from '../general/MapOptionsRecord';
 import NoResult from '../general/NoResult';
 import TableTitle from '../general/TableTitle';
 import TableList from '../general/TableList';
