@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../assets/css/order.css';
+import '../views/orders/orders.css';
 import OrdersRecap from '../views/orders/OrdersRecap'
 import OrdersTable from '../views/orders/OrdersTable'
 import CreateOrderForm from '../views/orders/CreateOrderForm';

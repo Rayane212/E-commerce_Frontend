@@ -16,5 +16,12 @@
     "order_issues": "exclamation",
     "settings_changes": "gears",
     "new_employees": "user-plus",
-    "shop_available": "eye"
+    "shop_available": "eye",
+    "id": "id-badge",
+    "mail": "at", 
+    "name": "id-card", 
+    "phone": "phone",
+    "username": "user",
+    "last_connexion": "at",
+    "access": "at"
 }

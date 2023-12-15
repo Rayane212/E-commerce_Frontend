@@ -7,13 +7,14 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import Customers from './pages/Customers';
 import Products from './pages/Products';
 import Settings from './pages/Settings';
+import AppRouter from './routers/AppRouter';
 library.add(fas);
 
 const App: FC = () => {
   return (
     <div className="App">
      <LeftBar/>
-     <Settings />
+     <AppRouter/>
     </div>
   );
 }

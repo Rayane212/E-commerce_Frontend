@@ -5,7 +5,7 @@ import NoResult from '../general/NoResult';
 import useCustomersTable from '../../hooks/useCustomersTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TableTitle from '../general/TableTitle';
-import MapOptions from '../general/MapOptionsRecord';
+import MapOptionsRecord from '../general/MapOptionsRecord';
 
 
 type CustomerState = {
@@ -183,7 +183,7 @@ export default function CustomersTable() {
                                 </a>
                                 <div className='pop_up_sort sort_fields_container'>
                                     <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => sort_view(e)} id='sort_select'>
-                                        <MapOptions list={optionList}/>
+                                        <MapOptionsRecord list={optionList}/>
                                     </select>
                                 </div>
                             </td>  

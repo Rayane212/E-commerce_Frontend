@@ -16,5 +16,12 @@
     "shop_email": "Adresse email de la boutique",
     "shop_phone": "Numéro de la boutique",
     "shop_adress": "Adresse de la boutique",
-    "shop_opening_hours": "Horaires d'ouverture"
+    "shop_opening_hours": "Horaires d'ouverture",
+    "id":"ID",
+    "mail": "Adresse mail", 
+    "name": "Nom", 
+    "phone": "Numéro de téléphone",
+    "username": "Nom d'utilisateur",
+    "last_connexion": "Dernière Connexion",
+    "access": "Autorisations"
 }

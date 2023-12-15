@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/customers.css';
+import '../views/customers/customers.css';
 import PageHeader from '../views/general/PageHeader';
 import Customers_Recap from '../views/customers/Customers_Recap';
 import CustomersTable from '../views/customers/CustomersTable';

@@ -3,21 +3,14 @@ import GeneralSettings from '../views/settings/GeneralSettings/GeneralSettings';
 import '../views/settings/settings.css'
 import PageHeader from '../views/general/PageHeader';
 import { SettingsOptions } from '../models/settings/SettingsOptions';
-
+import SettingsRouter from '../routers/SettingsRouter';
 
 function Settings() {
-    const settingsOptionsList = {
-        'general': 'Général',
-        'users': 'Utilisateurs et Autorisations',
-        'payments': 'Paiements',
-        'shipping_method': 'Méthodes de Livraison',
-        'politics': 'Politiques',
-    };
-    const testOptionsList: SettingsOptions = {
+    const settingsOptionsList: SettingsOptions = {
         'general': {
             'title': 'Général',
             'link' : "/general",
-            // 'component': <GeneralSettings/>
+            'component': <GeneralSettings/>
             },
         'users': {
             'title': 'Utilisateurs',
@@ -40,7 +33,8 @@ function Settings() {
             // 'component': <GeneralSettings/>
         },
     };
-      
+
+    
     return(
         <div className='main_container'>
             <PageHeader
@@ -50,9 +44,9 @@ function Settings() {
                 buttonTitle=''
                 isSelect={true}
                 isRecord={false}
-                optionsList={testOptionsList}
+                optionsList={settingsOptionsList}
             />
-            <GeneralSettings/>
+            <SettingsRouter test="test"/>
         </div>
         
     )

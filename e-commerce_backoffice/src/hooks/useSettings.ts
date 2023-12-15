@@ -4,7 +4,8 @@ import GetContactInfos from '../services/settings/GetContactInfos'
 import GetNotificationsInfos from '../services/settings/GetNotificationsInfos'
 import GetDicoText from '../services/settings/GetDicoText'
 import GetDicoIcon from '../services/settings/GetDicoIcon'
-
+import GetAllEmployees from '../services/settings/GetAllEmployees'
+import GetAllAdmins from '../services/settings/GetAllAdmins'
 class useSettings{
   async getGeneralShopInfos(){
     const generalInfos = await GetGeneralInfos() 
@@ -38,6 +39,23 @@ class useSettings{
     if (dicoIcon !== undefined){
       return dicoIcon
     }
+  }
+  async getEmployeesInfos(){
+    const employeesInfos = await GetAllEmployees();
+    return employeesInfos
+  }
+  async getAdminsInfos(){
+    const adminsInfos = await GetAllAdmins();
+    return adminsInfos
+  }
+  async getWorkers(){
+    const employeesInfos = await this.getEmployeesInfos()
+    const adminsInfos = await this.getAdminsInfos()
+    const workers = {
+      employeesInfos,
+      adminsInfos
+    }
+    return workers
   }
 }
 

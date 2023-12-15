@@ -1,0 +1,81 @@
+[{
+    "id": "1",
+    "name": "Hamza Sabil",
+    "mail": "hamzasabil@gmail.com", 
+    "phone": "0712345678", 
+    "username": "hamzasabil", 
+    "last_connexion": "Vendredi 15 décembre 2023",
+    "access" : {
+        "general": true, 
+        "finance": true, 
+        "marketing": false, 
+        "website_front": true, 
+        "website_back": true, 
+        "orders": true, 
+        "products": true, 
+        "customers": true, 
+        "statistique": true, 
+        "settings": true
+    }
+},
+{
+    "id":"2",
+    "name": "Romain Liennhart",
+    "mail": "romainliennhart@gmail.com", 
+    "phone": "0712345678", 
+    "username": "romainliennhart", 
+    "last_connexion": "Vendredi 15 décembre 2023",
+    "access" : {
+        "general": true, 
+        "finance": true, 
+        "marketing": true, 
+        "website_front": true, 
+        "website_back": true, 
+        "orders": true, 
+        "products": true, 
+        "customers": true, 
+        "statistique": true, 
+        "settings": false
+    }
+},
+{
+    "id":"3",
+    "name": "Rayane Hadi",
+    "mail": "rayanehadi@gmail.com", 
+    "phone": "0712345678", 
+    "username": "rayanehadi", 
+    "last_connexion": "Vendredi 15 décembre 2023",
+    "access" : {
+        "general": false, 
+        "finance": true, 
+        "marketing": true, 
+        "website_front": true, 
+        "website_back": true, 
+        "orders": true, 
+        "products": true, 
+        "customers": true, 
+        "statistique": true, 
+        "settings": true
+    }
+},
+{
+    "id":"4",
+    "name": "Mohamed Lamine",
+    "mail": "mohamedlamine@gmail.com", 
+    "phone": "0712345678", 
+    "username": "mohamedlamine", 
+    "last_connexion": "Vendredi 15 décembre 2023",
+    "access" : {
+        "general": true, 
+        "finance": true, 
+        "marketing": true, 
+        "website_front": true, 
+        "website_back": true, 
+        "orders": true, 
+        "products": false, 
+        "customers": true, 
+        "statistique": true, 
+        "settings": true
+    }
+}
+]
