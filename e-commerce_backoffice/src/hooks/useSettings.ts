@@ -6,6 +6,13 @@ import GetDicoText from '../services/settings/GetDicoText'
 import GetDicoIcon from '../services/settings/GetDicoIcon'
 import GetAllEmployees from '../services/settings/GetAllEmployees'
 import GetAllAdmins from '../services/settings/GetAllAdmins'
+import GetAllPaymentsProcessorSettings from '../services/settings/GetAllPaymentsProcessorSettings'
+import GetAllCheckoutFormSettings from '../services/settings/GetAllCheckoutFormSettings'
+import GetAllPaymentLegalInfos from '../services/settings/GetAllPaymentLegalInfos'
+import GetCheckoutAvailability from '../services/settings/GetCheckoutAvailability'
+
+
+
 class useSettings{
   async getGeneralShopInfos(){
     const generalInfos = await GetGeneralInfos() 
@@ -56,6 +63,37 @@ class useSettings{
       adminsInfos
     }
     return workers
+  }
+
+  async getPaymentSettings(){
+    const paymentsProcessorSettings = await this.getPaymentsProcessorSettings()
+    const paymentsCheckoutFormSettings = await this.getPaymentsCheckoutFormSettings()
+    const paymentsLegalInfos = await this.getPaymentsLegalInfos()
+    const checkout_availability = await this.getPaymentCheckoutAvailability()
+    const paymentSettings = {
+      paymentsProcessorSettings,
+      checkout_availability,
+      paymentsCheckoutFormSettings,
+      paymentsLegalInfos
+    }
+    return paymentSettings
+  }
+  async getPaymentCheckoutAvailability(){
+    const checkout_availability = await GetCheckoutAvailability()
+    return checkout_availability
+  }
+  async getPaymentsProcessorSettings(){
+    const paymentsProcessorSettings = await GetAllPaymentsProcessorSettings()
+    return paymentsProcessorSettings
+  }
+  async getPaymentsCheckoutFormSettings(){
+    const paymentsCheckoutFormSettings = await GetAllCheckoutFormSettings()
+    return paymentsCheckoutFormSettings
+
+  }
+  async getPaymentsLegalInfos(){
+    const paymentsLegalInfos = await GetAllPaymentLegalInfos()
+    return paymentsLegalInfos
   }
 }
 

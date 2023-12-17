@@ -1,5 +1,5 @@
 import React from 'react';
-import GeneralSettings from '../views/settings/GeneralSettings/GeneralSettings';
+import GeneralSettings from '../views/settings/general/GeneralSettings';
 import '../views/settings/settings.css'
 import PageHeader from '../views/general/PageHeader';
 import { SettingsOptions } from '../models/settings/SettingsOptions';

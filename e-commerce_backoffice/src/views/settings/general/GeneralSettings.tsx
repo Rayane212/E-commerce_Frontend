@@ -7,16 +7,22 @@ import { ContactInfos } from '../../../models/settings/ContactInfos';
 import { ShopInfos } from '../../../models/settings/ShopInfos';
 import MapSettings from '../MapSettings';
 
+type GeneralSettingsState = {
+    general_infos: GeneralInfos;
+    contact_infos: ContactInfos;
+    admin_notifs: NotifsInfos;
+    shop_infos: ShopInfos;
+}
 
 export default function GeneralSettings() {
-    const [shopInfos, setShopInfos] = React.useState<ShopInfos>();
-    const [adminNotifs, setAdminNotifs] = React.useState<NotifsInfos>();
-    const shopInfosData = useSettings.getShopInfos();
-    const notifsInfosArray = adminNotifs ? Object.entries(adminNotifs as NotifsInfos) : [];
-    const shopInfosArray = shopInfos ? Object.entries(shopInfos as ShopInfos) : [];
+    const [state, setState] = React.useState<GeneralSettingsState>();
+    
+    const notifsInfosArray = state ? Object.entries(state?.admin_notifs as NotifsInfos) : [];
+    const shopInfosArray = state ? Object.entries(state?.shop_infos as ShopInfos) : [];
     const dicoText: { [key: string]: string } = useSettings.getDicoText() as { [key: string]: string };
     const dicoIcon: { [key: string]: string } = useSettings.getDicoIcon() as { [key: string]: string };
-    const shop_adress_text = shopInfos ? shopInfos?.shop_address_number + ' ' + shopInfos?.shop_address_street + ', ' + shopInfos?.shop_address_zipcode + ' ' + shopInfos?.shop_address_city + ', ' + shopInfos.shop_address_state + ' ' + shopInfos.shop_address_country: '';
+    const shop_adress_text = state?.shop_infos ? state?.shop_infos?.shop_address_number + ' ' + state?.shop_infos?.shop_address_street + ', ' + state?.shop_infos?.shop_address_zipcode + ' ' + state?.shop_infos?.shop_address_city + ', ' + state?.shop_infos.shop_address_state + ' ' + state?.shop_infos.shop_address_country: '';
+   
     const sections = {
         'profil': {
             "title": "Profil",
@@ -67,23 +73,6 @@ export default function GeneralSettings() {
         shop_weight_unit: '',
         shop_metric_unit: '',
     };
-    let adminNotifsVar : NotifsInfos = {
-        new_sales: false,
-        refunds: false,
-        delivered_orders: false,
-        order_issues: false,
-        settings_changes: false,
-        new_employees: false,
-    }
-
-
-    shopInfosData.then((data) => {
-        const general_infos = data.generalInfos as GeneralInfos; 
-        const notifications_infos = data.notificationsInfos as NotifsInfos;
-        const contact_infos = data.contactInfos as ContactInfos;
-        changeShopInfos(general_infos, contact_infos);
-        changeNotifsInfos(notifications_infos);
-    })
     
     function changeShopInfos(general : GeneralInfos, contact : ContactInfos){
         shopInfosVar.shop_name = general.shop_name;
@@ -104,14 +93,7 @@ export default function GeneralSettings() {
         shopInfosVar.shop_weight_unit = general.shop_weight_unit == 'kg' ? 'Kilogrammes' : 'Grammes';
         shopInfosVar.shop_metric_unit = general.shop_metric_unit;
     }
-    function changeNotifsInfos(notifs : NotifsInfos){
-        adminNotifsVar.new_sales = notifs.new_sales;
-        adminNotifsVar.refunds = notifs.refunds;
-        adminNotifsVar.delivered_orders = notifs.delivered_orders;
-        adminNotifsVar.order_issues = notifs.order_issues;
-        adminNotifsVar.settings_changes = notifs.settings_changes;
-        adminNotifsVar.new_employees = notifs.new_employees;
-    }
+
     function showFields(e: any){
         const dataToShow = e.target.getAttribute('data-show') as HTMLElement;
         const textBtn = e.target.innerHTML;
@@ -126,8 +108,18 @@ export default function GeneralSettings() {
     }
 
     useEffect(() => {
-        setShopInfos(shopInfosVar);
-        setAdminNotifs(adminNotifsVar);
+        const shopInfosData = useSettings.getShopInfos();
+        shopInfosData.then((data) => {
+            if (data !== undefined){
+                changeShopInfos(data?.generalInfos as GeneralInfos, data?.contactInfos as ContactInfos);
+                setState({
+                    general_infos: data.generalInfos as GeneralInfos,
+                    contact_infos: data.contactInfos as ContactInfos,
+                    admin_notifs: data.notificationsInfos as NotifsInfos, 
+                    shop_infos: shopInfosVar
+                })
+            }
+        })
     }, [])
 
     

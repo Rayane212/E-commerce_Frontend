@@ -6,7 +6,7 @@ import CustomersTable from '../views/customers/CustomersTable';
 
 function Customers(){
   return (
-    <div className="container">
+    <div className="main_container">
       <PageHeader
         title='Clients'
         link='create_customer'

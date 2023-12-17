@@ -1,0 +1,15 @@
+{
+    "isLastNameOnly" : false,
+    "isCompletName" : true,
+    "isBusinessNameIncluded" : true,
+    "isBusinessNameRequired" : false,
+    "isSecondAddressLineIncluded" : true,
+    "isSecondAddressLineRequired" : false,
+    "isPhoneNumberIncluded" : true,
+    "isPhoneNumberRequired" : true,
+    "isMarketingMailOptInIncluded" : true,
+    "isMaketingMailOptInPreSelected" : true,
+    "isMarketingSMSOptInIncluded" : false,
+    "isMarketingSMSOptInPreSelected" : false,
+    "useShippingAddressAsBillingAddress" : true
+}

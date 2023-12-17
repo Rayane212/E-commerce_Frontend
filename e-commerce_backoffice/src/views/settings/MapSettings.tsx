@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { MapSettingsProps } from '../../models/settings/MapSettingsProps';
-import MapUsersSettings from './UsersSettings/MapUsersSettings';
+import MapUsersSettings from './users/MapUsersSettings';
 
 export default function MapSettings({ list, dicoText, dicoIcon, isArray }: MapSettingsProps) {
     return (
@@ -12,6 +12,9 @@ export default function MapSettings({ list, dicoText, dicoIcon, isArray }: MapSe
             if (data[0] === 'shop_available'){
                 infoTextAvailable = data[1] ? "Disponible" : "Indisponible";
             }
+            if (typeof data[1] === 'boolean' && data[0] !== 'shop_available'){
+                infoTextAvailable = data[1] ? "Oui" : "Non";
+            } 
             if (!isArray){
                 const divClassName = 'profil_infos_' + data[0];
                 const textClassName = data[0] + ' shop_infos_read';

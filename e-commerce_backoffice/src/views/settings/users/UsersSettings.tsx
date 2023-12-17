@@ -4,15 +4,23 @@ import useSettings from '../../../hooks/useSettings';
 import { Admin } from '../../../models/settings/Admin';
 import MapSettings from '../MapSettings';
 import MapUsersSettings from './MapUsersSettings';
+
+
+type UsersSettingsState = {
+    admins: Admin[];
+    employees: Employe[];
+}
+
+
 export default function UsersSettings() {
-    const [employees, setEmployees] = useState<Employe[]>([]);
-    const [admins, setAdmins] = useState<Admin[]>([]);
-    const all_workers = useSettings.getWorkers(); 
-    const adminsInfosArray = admins ? Object.entries(admins as Admin[]) : [];
-    const employeesInfosArray = employees ? Object.entries(employees as Employe[]) : [];
+    const [state, setState] = React.useState<UsersSettingsState>();
+    const adminsInfosArray = state ? Object.entries(state?.admins as Admin[]) : [];
+    const employeesInfosArray = state ? Object.entries(state?.employees as Employe[]) : [];
     const collaboratorsInfosArray: string[] = [];
     const dicoText: { [key: string]: string } = useSettings.getDicoText() as { [key: string]: string };
     const dicoIcon: { [key: string]: string } = useSettings.getDicoIcon() as { [key: string]: string };
+
+
     const sections = {
         'admins' : {
             "title" : "Administrateurs", 
@@ -37,24 +45,18 @@ export default function UsersSettings() {
         }
     }
     
-    
-    let allAdmins_var : Admin[];
-    let allEmployees_var : Employe[];
-
-    all_workers.then((data) => {
-        changeInfos(data.adminsInfos, data.employeesInfos)
-    })
-
-    const changeInfos = (adminsInfos: Admin[], employeesInfos: Employe[]) => {
-        allAdmins_var = adminsInfos;
-        allEmployees_var = employeesInfos;
-    }
-
 
     useEffect(() => {
-        setAdmins(allAdmins_var);
-        setEmployees(allEmployees_var);
-    })
+        const all_workers = useSettings.getWorkers(); 
+        all_workers.then((data) => {
+            if (data !== undefined){
+                setState({
+                    admins: data?.adminsInfos as Admin[],
+                    employees: data?.employeesInfos as Employe[]
+                })
+            }
+        })
+    }, [])
     
   return (
     <div className='users_settings_container'>
@@ -79,6 +81,7 @@ export default function UsersSettings() {
                             </> } */}
                             {!data[1] ? '' : <> 
                             {data[1].list_1.length === 0 && data[1].list_2.length === 0 ? 
+                                
                                 <p>Aucun collaborateurs externes ajoutés.</p> :
                             <>
                                 <div className='infos_container_grid'>

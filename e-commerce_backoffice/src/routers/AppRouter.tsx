@@ -6,9 +6,6 @@ import Customers from '../pages/Customers';
 import Products from '../pages/Products';
 import Settings from '../pages/Settings';
 import Stats from '../pages/Stats';
-import GeneralSettings from '../views/settings/GeneralSettings/GeneralSettings';
-import UsersSettings from '../views/settings/UsersSettings/UsersSettings';
-import SettingsRouter from './SettingsRouter';
 
 export default function AppRouter() {
   return (
@@ -22,6 +19,9 @@ export default function AppRouter() {
             <Route path='/settings' Component={Settings}/>
             <Route path='/settings/general' Component={Settings}/>
             <Route path='/settings/users' Component={Settings}/>
+            <Route path='/settings/payments' Component={Settings} />
+            <Route path="/settings/shipping_method" Component={Settings}/>
+            <Route path="/settings/politics" Component={Settings}/>
             <Route path='/stats' Component={Stats}/>
         </Routes>
     </Router>
