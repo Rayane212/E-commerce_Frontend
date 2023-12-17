@@ -16,7 +16,7 @@ export default function MapSettings({ list, dicoText, dicoIcon, isArray }: MapSe
                 infoTextAvailable = data[1] ? "Oui" : "Non";
             } 
             if (!isArray){
-                const divClassName = 'profil_infos_' + data[0];
+                const divClassName = data[0] + '_settings_container';
                 const textClassName = data[0] + ' shop_infos_read';
                 const dataText = dicoText[data[0]];
                 const dataIcon = dicoIcon[data[0]];
@@ -31,6 +31,25 @@ export default function MapSettings({ list, dicoText, dicoIcon, isArray }: MapSe
                         </div>
                     </div>
                 )
+            }
+            else{
+                const dataArray = data[1];
+                console.log(dataArray)
+                const divClassName = data[0] + '_settings_container';
+                const textClassName = data[0] + ' shop_infos_read';
+                const dataText = dicoText[data[0]];
+                const dataIcon = dicoIcon[data[0]];
+                // return (
+                //     <div key={data[0]} className={divClassName}>
+                //         <div className='icon'>
+                //             <FontAwesomeIcon icon={['fas', dataIcon as IconName]} />
+                //         </div>
+                //         <div className='settings_text'> 
+                //             <p>{dataText}</p>
+                //             <p className={textClassName}>{infoTextAvailable !== '' ? infoTextAvailable : data[1]}</p>
+                //         </div>
+                //     </div>
+                // )
             }
             
             

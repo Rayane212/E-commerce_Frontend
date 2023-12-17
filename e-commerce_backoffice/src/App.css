@@ -1,25 +1,26 @@
 :root{
   --background-color: #cacaca;
   --background-color-2: #161616;
+  --background-color_second: #8D99AE;
+  --background-color_primary: #EDF2F4;
 }
 
-.pageHeader{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.pageHeader .create_button{
-  background-color: red;
-  color:white;
-  font-size: 13px;
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 7px 15px;
-  border-radius: 10px;
+p{
+  padding: 2px;
+  margin:2px;
 }
+
+.hide{
+  display: none!important;
+}
+
 
 .table_container{
   margin-top: 30px;

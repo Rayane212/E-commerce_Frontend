@@ -1,17 +1,23 @@
 [
     {
       "id": "1",
+      "handle": "standard_7_days",
+      "type": "standard",
       "title": "Livraison Standard en 7 jours",
       "delivery_time": "7",
+      "delivery_time_unit": "days",
       "price": "0",
       "available": true
     },
     {
-        "id": "2",
-        "title": "Livraison Express en 3 jours",
-        "delivery_time": "7",
-        "price": "0",
-        "available": true
-      }
+      "id": "2",
+      "handle": "express_3_days",
+      "type": "express",
+      "title": "Livraison Express en 3 jours",
+      "delivery_time": "3",
+      "delivery_time_unit": "days",
+      "price": "4.99",
+      "available": true
+    }
   ]
   

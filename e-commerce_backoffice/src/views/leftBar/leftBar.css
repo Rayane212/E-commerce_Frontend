@@ -1,15 +1,3 @@
-:root{
-    --background-color_second: #8D99AE;
-    --background-color_primary: #EDF2F4;
-}
-
-
-
-*{
-    margin: 0;
-    padding: 0;
-}
-
 .left-bar{
     display: flex;
     flex-direction: column;

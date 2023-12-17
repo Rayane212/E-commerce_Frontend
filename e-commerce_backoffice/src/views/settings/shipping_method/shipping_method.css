@@ -1,0 +1,99 @@
+.shipping_methods_table{
+    width: 80%;
+    text-align: center;
+}
+
+.all_shipping_methods_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.shipping_methods_table td{
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(225, 225, 225, 0.661);
+}
+
+.shipping_method_title{
+    align-items: center;
+}
+
+.shipping_method_title p{
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+}
+
+.shipping_method_price{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.shipping_method_price .price_currency{
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.shipping_method_input{
+    height: 30px;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(225, 225, 225, 0.661);
+}
+
+.text_input{
+    width: 30% ;
+    text-align: center;
+    font-size: 17px;
+}
+.title_input{
+    width: 85% ;
+    text-align: left;
+    font-size: 15px;;
+}
+
+.shipping_method_select{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(225, 225, 225, 0.661);
+}
+
+.shipping_method_availability p{
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.shipping_method_delivery_time p{
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.shipping_method_delivery_time_input_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery_time_select{
+    width: 50%;
+    height: 30%;
+    font-size: 15px;
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: rgba(225, 225, 225, 0.661);
+}

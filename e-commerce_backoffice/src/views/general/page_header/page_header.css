@@ -1,0 +1,17 @@
+.pageHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  }
+  
+  .pageHeader .create_button{
+    background-color: red;
+    color:white;
+    font-size: 13px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 7px 15px;
+    border-radius: 10px;
+  }

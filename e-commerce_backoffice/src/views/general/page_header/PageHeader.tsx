@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FC, useEffect } from 'react'
-import { HeaderProps } from '../../models/HeaderProps'
-import MapOptionsRecord from './MapOptionsRecord'
-import MapOptionsSettingsOptions from './MapOptionsSettingsOptions'
-import { SettingsOptions } from '../../models/settings/SettingsOptions'
-
+import { HeaderProps } from '../../../models/HeaderProps'
+import MapOptionsRecord from '../MapOptionsRecord'
+import MapOptionsSettingsOptions from '../MapOptionsSettingsOptions'
+import { SettingsOptions } from '../../../models/settings/SettingsOptions'
+import './page_header.css'
 
 const PageHeader: React.FC<HeaderProps> = ({ title, link, isButton, buttonTitle, isSelect, isRecord, optionsList }) => {
   const redirectTo = (e: React.ChangeEvent<HTMLSelectElement>) => {

@@ -10,6 +10,7 @@ import GetAllPaymentsProcessorSettings from '../services/settings/GetAllPayments
 import GetAllCheckoutFormSettings from '../services/settings/GetAllCheckoutFormSettings'
 import GetAllPaymentLegalInfos from '../services/settings/GetAllPaymentLegalInfos'
 import GetCheckoutAvailability from '../services/settings/GetCheckoutAvailability'
+import GetAllShippingsMethod from '../services/settings/GetAllShippingsMethod'
 
 
 
@@ -94,6 +95,14 @@ class useSettings{
   async getPaymentsLegalInfos(){
     const paymentsLegalInfos = await GetAllPaymentLegalInfos()
     return paymentsLegalInfos
+  }
+  async getShippingMethodsInfos(){
+    const shippingMethodsInfos = await GetAllShippingsMethod()
+    return shippingMethodsInfos
+  }
+
+  arrayFromObject(object: any){
+    console.log(object)
   }
 }
 

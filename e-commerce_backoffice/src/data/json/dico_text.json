@@ -47,5 +47,20 @@
     "payment_processor_test_mode" : "Mode test",
     "payment_processor_api_key": "Clé API du processeur de paiement",
     "payment_processor_api_secret": "Clé secrète API",
-    "payment_processor_api_public": "Clé publique API"
+    "payment_processor_api_public": "Clé publique API",
+    "title": "Titre",
+    "delivery_time": "Délai de livraison",
+    "price": "Prix",
+    "days": "jours",
+    "hours": "heures",
+    "minutes": "minutes",
+    "seconds": "secondes",
+    "day": "jour",
+    "hour": "heure",
+    "minute": "minute",
+    "second": "seconde",
+    "add": "Ajouter",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "available": "Disponible"
 }

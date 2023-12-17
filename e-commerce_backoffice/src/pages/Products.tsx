@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductsRecap from '../views/products/ProductsRecap';
 import ProductsTable from '../views/products/ProductsTable';
-import PageHeader from '../views/general/PageHeader';
+import PageHeader from '../views/general/page_header/PageHeader';
 
 export default function Products() {
   return (

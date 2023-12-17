@@ -1,7 +1,7 @@
 import React from 'react';
 import GeneralSettings from '../views/settings/general/GeneralSettings';
 import '../views/settings/settings.css'
-import PageHeader from '../views/general/PageHeader';
+import PageHeader from '../views/general/page_header/PageHeader';
 import { SettingsOptions } from '../models/settings/SettingsOptions';
 import SettingsRouter from '../routers/SettingsRouter';
 

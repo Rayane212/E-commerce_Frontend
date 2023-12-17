@@ -1,6 +1,6 @@
 import React from 'react';
 import '../views/customers/customers.css';
-import PageHeader from '../views/general/PageHeader';
+import PageHeader from '../views/general/page_header/PageHeader';
 import Customers_Recap from '../views/customers/Customers_Recap';
 import CustomersTable from '../views/customers/CustomersTable';
 

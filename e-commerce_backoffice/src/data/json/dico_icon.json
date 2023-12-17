@@ -47,5 +47,11 @@
     "payment_processor_test_mode": "eye",
     "payment_processor_api_key": "gears",
     "payment_processor_api_secret": "gears",
-    "payment_processor_api_public": "gears"
+    "payment_processor_api_public": "gears",
+    "title" : "eye",
+    "delivery_time": "eye",
+    "price": "eye",
+    "available": "eye",
+    "standard": "eye",
+    "express": "eye"
 }
