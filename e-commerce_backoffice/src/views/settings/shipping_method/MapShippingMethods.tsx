@@ -29,20 +29,27 @@ export default function MapShippingMethods({ list, dicoText, dicoIcon, isArray, 
                 <tbody>
                     <tr>
                         <td>
-                            <div className='shipping_method_title'>
-                                <p className='flex_row'>
-                                    <FontAwesomeIcon icon={['fas', dicoIcon[listArray.type] as any]} />
-                                    <p>{listArray.title}</p>
-                                </p>
+                            <div className='shipping_method_title gap flex_row'>
+                                <FontAwesomeIcon icon={['fas', dicoIcon[listArray.type] as any]} />
+                                <div className='shipping_method_title_text_input_container full_width'>
+                                    <p className='title_label'>
+                                        <span className='title'>{listArray.title}</span>
+                                    </p>
+                                </div>
                                 
                             </div>
                         </td>
                         <td>
-                            <p className='price shipping_method_price'>
-                                {priceText}
-                                <input type='text' className='shipping_method_input text_input hide' value={priceText}/>
-                                <span className='price_currency'>€</span>
-                            </p>
+                            <div className='shipping_method_price'>
+                                <p className='price shipping_method_price price_label'>
+                                    {priceText}
+                                    <span className='price_currency'>€</span>
+                                </p>
+                                <div className='shipping_method_price_input_container flex_row hide align_end'>
+                                    <input type='text' className='shipping_method_input text_input' placeholder={priceText}/>
+                                    <span className='price_currency'>€</span>
+                                </div>
+                            </div>
                             
                         </td>
                     </tr>
@@ -55,20 +62,20 @@ export default function MapShippingMethods({ list, dicoText, dicoIcon, isArray, 
                         <tr>
                             <td>
                                 <div className='shipping_method_title'>
-                                    <p className='flex_row'>
+                                    <div className='flex_row gap'>
                                         <FontAwesomeIcon icon={['fas', dicoIcon[listArray.type] as any]} />
                                         <p>{listArray.title}</p>
-                                    </p>
+                                    </div>
                                 </div>
                             </td>
                             <td>
                                 <div className='shipping_method_delivery_time'>
-                                    <p>
+                                    <p className='delivery_time_label'>
                                         <span className='delivery_time'>{listArray.delivery_time}</span>
                                         <span className='day'> jours</span>
                                     </p>
                                     <div className='shipping_method_delivery_time_input_container hide'>
-                                        <input type='text' className='shipping_method_input text_input' value={listArray.delivery_time}/>
+                                        <input type='text' className='shipping_method_input text_input' placeholder={listArray.delivery_time}/>
                                         <select className='shipping_method_select delivery_time_select'>
                                             <option value='hours'>Heures</option>
                                             <option value='days'>Jours</option>
@@ -89,25 +96,31 @@ export default function MapShippingMethods({ list, dicoText, dicoIcon, isArray, 
                     <tbody>
                         <tr>
                             <td>
-                                <div className='shipping_method_title flex_row'>
-                                <FontAwesomeIcon icon={['fas', dicoIcon[listArray.type] as any]} />
-                                    <p>
-                                        <span className='title'>{listArray.title}</span>
-                                        <input type='text' className='shipping_method_input title_input hide' value={listArray.title}/>
-                                    </p>
+                                <div className='shipping_method_title flex_row gap'>
+                                    <FontAwesomeIcon icon={['fas', dicoIcon[listArray.type] as any]} />
+                                    <div className='shipping_method_title_text_input_container full_width'>
+                                        <p className='title_label'>
+                                            <span className='title'>{listArray.title}</span>
+                                        </p>
+                                        <div className='shipping_method_title_input_container full_width hide'>
+                                            <input type='text' className='shipping_method_input title_input ' placeholder={listArray.title}/>
+                                        </div>
+                                    </div>
                                     
                                 </div>
+                                
                             </td>
                             <td>
-                            <div className='shipping_method_availability'>
-                                <p>
-                                    <span className='availability'>{listArray.available ? "Actif": "Inactif"}</span>
-                                    <select className='shipping_method_select availability_select hide '>
-                                        <option value='true'>Actif</option>
-                                        <option value='false'>Inactif</option>
-                                    </select>
-                                </p>
-                                    
+                                <div className='shipping_method_availability'>
+                                    <p className='availability_label'>
+                                        <span className='availability'>{listArray.available ? "Actif": "Inactif"}</span>
+                                    </p>
+                                    <div className='shipping_method_availability_input_container hide '>
+                                        <select className='shipping_method_select availability_select  '>
+                                            <option value='true'>Actif</option>
+                                            <option value='false'>Inactif</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </td>
                             

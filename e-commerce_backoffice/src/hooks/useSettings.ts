@@ -101,9 +101,6 @@ class useSettings{
     return shippingMethodsInfos
   }
 
-  arrayFromObject(object: any){
-    console.log(object)
-  }
 }
 
 export default new useSettings()
