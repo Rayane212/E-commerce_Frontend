@@ -4,7 +4,7 @@ import "../../App.css";
 import "./Navbar.css";
 import { GiMagnifyingGlass } from "react-icons/gi";
 import { FaOpencart } from "react-icons/fa";
-import logo from "../../assets/images/Sneaker-removebg-preview.png";
+import logo from "../../assets/Images/Sneaker-removebg-preview.png";
 
 export default function Navbar() {
   return (

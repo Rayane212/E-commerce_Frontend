@@ -1,6 +1,6 @@
 import React from "react";
 import products from "../../assets/products.json";
-import shoe from "../../assets/images/shoe_article.jpeg";
+import shoe from "../../assets/Images/shoe_article.jpeg";
 import { FaOpencart } from "react-icons/fa6";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./News.css";
