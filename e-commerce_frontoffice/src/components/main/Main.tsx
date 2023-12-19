@@ -3,6 +3,8 @@ import "../../App.css";
 import "./Main.css";
 import shoe from "../../assets/images/shoe_article.jpeg";
 import products from "../../assets/products.json";
+import { FaOpencart } from "react-icons/fa6";
+
 
 export default function Main() {
   /* const [products, setProducts] = useState([]);
@@ -30,9 +32,9 @@ export default function Main() {
             <div className="info">
               <h2>{product.name}</h2>
               <p>{product.brand}</p>
-              <span>{product.price}</span>
+              <span>{product.price}€</span>
             </div>
-            <button>Add to cart</button>
+            <button><FaOpencart /></button>
           </div>
         </article>
       ))}

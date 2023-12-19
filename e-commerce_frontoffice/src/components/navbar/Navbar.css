@@ -4,8 +4,10 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5em;
-    background-color: var(--primary-color);
+    padding: 0 3em;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
     & img{
         width: 10em;
     }
