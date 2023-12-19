@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import './leftBar.css';
 
 interface MenuItem {
@@ -19,7 +20,9 @@ const Menu_LeftBar: FC = () => {
     <ul>
       {menuItems.map((item, index) => (
         <li key={index}>
-          <a href={item.link}>{item.text}</a>
+          <NavLink 
+          className={({ isActive }) => (isActive ? 'activeLink' : '')}
+          to={item.link as string}>{item.text}</NavLink>
         </li>
       ))}
     </ul>
@@ -45,6 +48,7 @@ const LeftBar: FC = () => {
     <div className="left-bar">
       <div className="nav-menu">
         <Menu_LeftBar />
+        
       </div>
       <div className='nav-logout'>
         <Menu_LogOut />

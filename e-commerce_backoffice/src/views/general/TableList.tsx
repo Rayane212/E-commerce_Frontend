@@ -3,6 +3,7 @@ import { TableListProps } from '../../models/TableListProps'
 import { Customer } from '../../models/customers/Customer';
 import { Order } from '../../models/orders/Order';
 import { Product } from '../../models/products/Product';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 
 
@@ -10,6 +11,7 @@ import { Product } from '../../models/products/Product';
 
 const TableList: React.FC<TableListProps> = ({ customers, orders, products }) => {
   const currency: string[] = ["euro", "EUR", "€"];
+  const navigate = useNavigate();
   if (customers.length !== 0 && products.length === 0 && orders.length === 0){
     return (
       <tbody>
@@ -33,8 +35,11 @@ const TableList: React.FC<TableListProps> = ({ customers, orders, products }) =>
     return (
       <tbody>
         <>
+        
           {orders.map((item: Order) => (
-            <tr className='result_row' key={item.id}>
+            <tr className='result_row' key={item.id} onClick={()=>{
+              navigate('/orders/' + item.id)
+            }}>
               <td className="tg-ycr8">{item.id}</td>
               <td className="tg-ycr8">{item.date}</td> 
               <td className="tg-ycr8">{item.client}</td> 

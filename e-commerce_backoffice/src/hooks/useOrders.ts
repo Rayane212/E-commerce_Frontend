@@ -5,7 +5,7 @@ import FilterOrders from '../services/orders/FilterOrders';
 import OrdersResearch from '../services/orders/OrdersResearch';
 import OrderSort from '../services/orders/OrderSort';
 
-class useOrdersTable{
+class useOrders{
   async GetOrders(){
     const data = GetAllOrders();
     return data;
@@ -39,6 +39,12 @@ class useOrdersTable{
         }
     }
   }
+
+  async getOrderById(id: string){
+    const orders = await this.GetOrders(); 
+    const order_result = orders.find((order) => order?.id === id) as Order;
+    return order_result;
+  }
 }
 
-export default new useOrdersTable()
+export default new useOrders()

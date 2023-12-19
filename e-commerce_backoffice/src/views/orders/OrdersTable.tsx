@@ -5,7 +5,7 @@ import MapOptions from '../general/MapOptionsRecord';
 import NoResult from '../general/NoResult';
 import TableTitle from '../general/TableTitle';
 import TableList from '../general/TableList';
-import useOrdersTable from '../../hooks/useOrdersTable';
+import useOrdersTable from '../../hooks/useOrders';
 
 type OrderState = {
   orders: Order[];
@@ -14,9 +14,16 @@ type OrderState = {
   showList: boolean;
 }
 
+type FilteredOrders = {
+    all_orders: Order[];
+    processed_orders: Order[];
+    unprocessed_orders: Order[];
+    closed_orders: Order[];
+}
+
 function OrdersTable() {
   const [state, setState] = useState<OrderState>();
-  const filtered_orders = useOrdersTable.asyncFilterOrders();
+  const [filtered_orders, setFilteredOrders] = useState<FilteredOrders>();
   const tableHeaders = ['ID', 'Date', 'Client', 'Total', 'Nombre d\'articles', 'Méthode de Livraison', 'Statut', 'Process'];
   const optionList = {
     'id_asc': 'Par ID Croissant',
@@ -29,30 +36,6 @@ function OrdersTable() {
     'date_desc': 'Par Date Antéchronologique',
   };
 
-  let filtered_data: {
-    all_orders: Order[];
-    processed_orders: Order[];
-    unprocessed_orders: Order[];
-    closed_orders: Order[];
-} = {
-    all_orders: [],
-    processed_orders: [],
-    unprocessed_orders: [],
-    closed_orders: []
-};
-  
-filtered_orders.then((result) => {
-  if (result !== undefined) {
-       filtered_data.all_orders = result.data;
-       filtered_data.processed_orders = result.filter_data.processed_orders;
-       filtered_data.unprocessed_orders = result.filter_data.unprocessed_orders;
-       filtered_data.closed_orders = result.filter_data.closed_orders;
-   }
-
-});
-
-
-
   const dontRedirect = (e: any) => {
     e.preventDefault();
   }
@@ -60,6 +43,7 @@ filtered_orders.then((result) => {
 
   useEffect(() => {
     const allCustomers = useOrdersTable.GetOrders();
+    const filterOrders = useOrdersTable.asyncFilterOrders();
     allCustomers.then((result) => {
         if (result !== undefined) {
             setState({
@@ -70,6 +54,17 @@ filtered_orders.then((result) => {
             })
         }
     })
+    filterOrders.then((result) => {
+        if (result !== undefined) {
+            setFilteredOrders({
+                all_orders: result?.data as Order[],
+                processed_orders: result?.filter_data?.processed_orders as Order[],
+                unprocessed_orders: result?.filter_data?.unprocessed_orders as Order[],
+                closed_orders: result?.filter_data?.closed_orders as Order[],
+            })
+        }
+      
+      });
 }, []);
 
 
@@ -112,7 +107,7 @@ filtered_orders.then((result) => {
   const filter__view = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const element = e.target as HTMLButtonElement;
     const data_list_element = element.dataset.list;
-    const data_list = filtered_data[data_list_element as keyof typeof filtered_data];
+    const data_list = filtered_orders ? filtered_orders[data_list_element as keyof typeof filtered_orders] : null;
     if (data_list !== undefined) {
         setState({
             orders: data_list as Order[],

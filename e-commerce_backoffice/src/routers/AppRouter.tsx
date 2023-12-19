@@ -6,24 +6,24 @@ import Customers from '../pages/Customers';
 import Products from '../pages/Products';
 import Settings from '../pages/Settings';
 import Stats from '../pages/Stats';
+import OrderPage from '../views/orders/OrderPage/OrderPage';
 
 export default function AppRouter() {
-  return (
-    <Router>
-        <Routes>
-            <Route path='/' Component={Home}/>
-            <Route path='/home' Component={Home}/>
-            <Route path='/orders' Component={Orders}/>
-            <Route path='/customers' Component={Customers}/>
-            <Route path='/products' Component={Products}/>
-            <Route path='/settings' Component={Settings}/>
-            <Route path='/settings/general' Component={Settings}/>
-            <Route path='/settings/users' Component={Settings}/>
-            <Route path='/settings/payments' Component={Settings} />
-            <Route path="/settings/shipping_method" Component={Settings}/>
-            <Route path="/settings/politics" Component={Settings}/>
-            <Route path='/stats' Component={Stats}/>
-        </Routes>
-    </Router>
+  return ( 
+    <Routes>
+      <Route path='/' Component={Home}/>
+      <Route path='/home' Component={Home}/>
+      <Route path='/orders' Component={Orders}/>
+      <Route path='/orders/:id' element={<OrderPage/>} />
+      <Route path='/customers' Component={Customers}/>
+      <Route path='/products' Component={Products}/>
+      <Route path='/settings' Component={Settings}/>
+      <Route path='/settings/general' Component={Settings}/>
+      <Route path='/settings/users' Component={Settings}/>
+      <Route path='/settings/payments' Component={Settings} />
+      <Route path="/settings/shipping_method" Component={Settings}/>
+      <Route path="/settings/politics" Component={Settings}/>
+      <Route path='/stats' Component={Stats}/>
+    </Routes>
   )
 }

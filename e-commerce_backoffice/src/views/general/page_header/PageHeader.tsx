@@ -4,35 +4,15 @@ import MapOptionsRecord from '../MapOptionsRecord'
 import MapOptionsSettingsOptions from '../MapOptionsSettingsOptions'
 import { SettingsOptions } from '../../../models/settings/SettingsOptions'
 import './page_header.css'
+import { useNavigate } from 'react-router-dom'
 
 const PageHeader: React.FC<HeaderProps> = ({ title, link, isButton, buttonTitle, isSelect, isRecord, optionsList }) => {
+  const settings_navigation = useNavigate();
   const redirectTo = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const linkToRedirect = (optionsList[e.target.value] as { link: string }).link;
-    const titleNewPage = (optionsList[e.target.value] as { title: string }).title;
-    window.location.href = '/settings' + linkToRedirect;
+    const linkToRedirect = '/settings' + (optionsList[e.target.value] as { link: string }).link;
+    settings_navigation(linkToRedirect);
   }
-  const changeSelectValue = (newValue:string) => {
-    const select = document.querySelector('.chooseView') as HTMLSelectElement | null;
-    if (select){
-      select.value = newValue;
-    }
-  }
-  const windowLocation = window.location.pathname;
 
-  useEffect(() => {
-    if (windowLocation.includes('/settings')) {
-      const slicedPath = windowLocation.slice(10);
-      // if(slicedPath === '') {
-      //   window.location.href = '/settings/general';
-      // }
-      // else{
-      //   changeSelectValue(slicedPath);
-      // }
-      changeSelectValue(slicedPath);
-      
-    }
-  })
-  
   return (
     <div className='pageHeader'>
         <h1>{title}</h1>

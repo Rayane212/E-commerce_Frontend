@@ -1,9 +1,25 @@
 import React from 'react';
+import PageHeader from '../views/general/page_header/PageHeader';
+import ProductsRecap from '../views/products/ProductsRecap';
+import Customers_Recap from '../views/customers/Customers_Recap';
+import OrdersRecap from '../views/orders/OrdersRecap';
 
-// Votre code pour le composant Home
 function Home() {
     return(
-        <div></div>
+        <div className="main_container">
+            <PageHeader 
+                title="Accueil" 
+                link=''
+                buttonTitle=''
+                isButton={false}
+                isSelect={false}
+                isRecord={false}
+                optionsList={{}}
+            />
+            <OrdersRecap/>
+            <Customers_Recap/>
+            <ProductsRecap/>
+        </div>
     )
 }
 
