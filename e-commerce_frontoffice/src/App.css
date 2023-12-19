@@ -9,4 +9,9 @@
     --secondary-color: #C0C0C0;
     --tertiary-color: #2F4F4F;
     --accent-color: #4682B4;
+
+    & a{
+        text-decoration: none;
+        color: inherit;
+    }
 }

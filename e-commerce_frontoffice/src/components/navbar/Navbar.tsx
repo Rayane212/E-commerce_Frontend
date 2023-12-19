@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, NavLink } from "react-router-dom";
 import "../../App.css";
 import "./Navbar.css";
 import { GiMagnifyingGlass } from "react-icons/gi";
@@ -19,19 +19,18 @@ export default function Navbar() {
         </div>
         <ul>
           <li>
-            <Link to="/">Nouveautés</Link>
+            <NavLink to="/">Nouveautés</NavLink>
           </li>
           <li>
-            <Link to="/Men">Hommes</Link>
+            <NavLink to="/Men">Hommes</NavLink>
           </li>
           <li>
-            <Link to="/Women">Femmes</Link>
+            <NavLink to="/Women">Femmes</NavLink>
           </li>
-          <li>
-            <Link to="/Cart">
-              {" "}
+          <li >
+            <NavLink className="cart-icon" to="/Cart">
               <FaOpencart />
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
