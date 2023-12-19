@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faX } from "@fortawesome/free-solid-svg-icons";
 import Checkbox from "../checkbox/Checkbox";
 
 export default function Sidebar() {
@@ -13,10 +12,6 @@ export default function Sidebar() {
   return (
     <aside>
       <h3>Affinez votre recherche</h3>
-      <div className="searchbar">
-        <input type="text" placeholder="Rechercher" />
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
-      </div>
       <h4>Marque</h4>
       <ul>
         <Checkbox label="Adidas" value={false} onChange={handleChange} />

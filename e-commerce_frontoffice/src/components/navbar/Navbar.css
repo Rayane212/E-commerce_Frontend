@@ -11,6 +11,35 @@ nav{
     & img{
         width: 10em;
     }
+
+    & .searchbar{
+        border: 1px solid var(--secondary-color);
+        border-radius: 2em;
+        padding: .5em 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & input{
+            border: none;
+            outline: none;
+            padding: 0.5em 1em;
+            border-radius: 2em;
+            width: 20em;
+            font-size: 1em;
+        }
+
+        & .search-icon{
+            color: var(--secondary-color);
+            font-size: 1.5em;
+
+            &:hover{
+                cursor: pointer;
+                color: var(--accent-color);
+            }
+        }
+    }
+
     & ul{
         list-style: none;
         display: flex;
