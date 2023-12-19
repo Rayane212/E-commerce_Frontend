@@ -10,7 +10,3 @@
     --tertiary-color: #2F4F4F;
     --accent-color: #4682B4;
 }
-
-body {
-    background-color: var(--secondary-color);
-}

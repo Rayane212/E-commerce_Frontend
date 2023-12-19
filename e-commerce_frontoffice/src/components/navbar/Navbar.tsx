@@ -2,8 +2,8 @@ import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import "../../App.css";
 import "./Navbar.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { GiMagnifyingGlass } from "react-icons/gi";
+import { FaOpencart } from "react-icons/fa";
 import logo from "../../assets/images/Sneaker-removebg-preview.png";
 
 export default function Navbar() {
@@ -11,6 +11,12 @@ export default function Navbar() {
     <div>
       <nav>
         <img src={logo} alt="" />
+        <div className="searchbar">
+          <input type="text" placeholder="Rechercher" />
+          <span className="search-icon" onClick={() => {
+            console.log("search");
+           }}><GiMagnifyingGlass /></span>
+        </div>
         <ul>
           <li>
             <Link to="/">Nouveautés</Link>
@@ -24,7 +30,7 @@ export default function Navbar() {
           <li>
             <Link to="/Cart">
               {" "}
-              <FontAwesomeIcon icon={faCartShopping} />
+              <FaOpencart />
             </Link>
           </li>
         </ul>
