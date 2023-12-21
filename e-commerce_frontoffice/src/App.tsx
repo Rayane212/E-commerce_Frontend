@@ -8,7 +8,6 @@ import Women from "./pages/Women/Women";
 import Cart from "./pages/Cart/Cart";
 import Article from "./pages/Article/Article";
 
-
 function App() {
   return (
     <div className="App">
