@@ -1,8 +1,8 @@
 import React from 'react';
 import PageHeader from '../views/general/page_header/PageHeader';
 import ProductsRecap from '../views/products/ProductsRecap';
-import Customers_Recap from '../views/customers/Customers_Recap';
-import OrdersRecap from '../views/orders/OrdersRecap';
+import Customers_Recap from '../views/customers/recap/Customers_Recap';
+import OrdersRecap from '../views/orders/OrdersRecap/OrdersRecap';
 
 function Home() {
     return(

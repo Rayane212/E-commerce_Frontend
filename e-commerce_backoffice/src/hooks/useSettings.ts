@@ -1,16 +1,16 @@
 import React from 'react'
-import GetGeneralInfos from '../services/settings/GetGeneralInfos'
-import GetContactInfos from '../services/settings/GetContactInfos'
-import GetNotificationsInfos from '../services/settings/GetNotificationsInfos'
-import GetDicoText from '../services/settings/GetDicoText'
-import GetDicoIcon from '../services/settings/GetDicoIcon'
-import GetAllEmployees from '../services/settings/GetAllEmployees'
-import GetAllAdmins from '../services/settings/GetAllAdmins'
-import GetAllPaymentsProcessorSettings from '../services/settings/GetAllPaymentsProcessorSettings'
-import GetAllCheckoutFormSettings from '../services/settings/GetAllCheckoutFormSettings'
-import GetAllPaymentLegalInfos from '../services/settings/GetAllPaymentLegalInfos'
-import GetCheckoutAvailability from '../services/settings/GetCheckoutAvailability'
-import GetAllShippingsMethod from '../services/settings/GetAllShippingsMethod'
+import GetGeneralInfos from '../services/get_data/GetGeneralInfos'
+import GetContactInfos from '../services/get_data/GetContactInfos'
+import GetNotificationsInfos from '../services/get_data/GetNotificationsInfos'
+import GetDicoText from '../services/get_data/GetDicoText'
+import GetDicoIcon from '../services/get_data/GetDicoIcon'
+import GetAllEmployees from '../services/get_data/GetAllEmployees'
+import GetAllAdmins from '../services/get_data/GetAllAdmins'
+import GetAllPaymentsProcessorSettings from '../services/get_data/GetAllPaymentsProcessorSettings'
+import GetAllCheckoutFormSettings from '../services/get_data/GetAllCheckoutFormSettings'
+import GetAllPaymentLegalInfos from '../services/get_data/GetAllPaymentLegalInfos'
+import GetCheckoutAvailability from '../services/get_data/GetCheckoutAvailability'
+import GetAllShippingsMethod from '../services/get_data/GetAllShippingsMethod'
 
 
 
@@ -96,11 +96,7 @@ class useSettings{
     const paymentsLegalInfos = await GetAllPaymentLegalInfos()
     return paymentsLegalInfos
   }
-  async getShippingMethodsInfos(){
-    const shippingMethodsInfos = await GetAllShippingsMethod()
-    return shippingMethodsInfos
-  }
-
+  
 }
 
 export default new useSettings()

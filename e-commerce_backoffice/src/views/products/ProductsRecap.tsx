@@ -1,5 +1,5 @@
 import React from 'react'
-import GetAllProducts from '../../services/products/GetAllProducts'
+import GetAllProducts from '../../services/get_data/GetAllProducts'
 import FilterProducts from '../../services/products/FilterProducts';
 
 export default function ProductsRecap() {

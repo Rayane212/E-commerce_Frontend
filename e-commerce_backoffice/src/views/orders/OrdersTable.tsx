@@ -5,7 +5,7 @@ import MapOptions from '../general/MapOptionsRecord';
 import NoResult from '../general/NoResult';
 import TableTitle from '../general/TableTitle';
 import TableList from '../general/TableList';
-import useOrdersTable from '../../hooks/useOrders';
+import useOrdersTable from '../../services/orders/OrderService';
 
 type OrderState = {
   orders: Order[];

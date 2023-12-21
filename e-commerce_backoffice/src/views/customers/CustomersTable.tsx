@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Customer } from '../../models/customers/Customer';
 import TableList from '../general/TableList';
 import NoResult from '../general/NoResult';
-import useCustomersTable from '../../hooks/useCustomersTable';
+import useCustomersTable from '../../services/customers/CustomerService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TableTitle from '../general/TableTitle';
 import MapOptionsRecord from '../general/MapOptionsRecord';

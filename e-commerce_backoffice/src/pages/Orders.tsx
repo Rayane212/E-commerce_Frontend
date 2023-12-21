@@ -1,6 +1,6 @@
 import React from 'react'
 import '../views/orders/orders.css';
-import OrdersRecap from '../views/orders/OrdersRecap'
+import OrdersRecap from '../views/orders/OrdersRecap/OrdersRecap'
 import OrdersTable from '../views/orders/OrdersTable'
 import CreateOrderForm from '../views/orders/CreateOrderForm';
 import PageHeader from '../views/general/page_header/PageHeader';

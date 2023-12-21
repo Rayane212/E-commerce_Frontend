@@ -1,11 +1,18 @@
 export interface Product {
-    id: string;
-    title: string;
-    on_sale: boolean;
-    stock: string;
-    category: string;
-    supplier: string;
-    price_regular: string;
-    price_on_sale: string;
-    available: boolean;
-  }
+  id: string;
+  name: string;
+  description: string; 
+  on_sale: boolean;
+  stock: string;
+  category: string;
+  supplier: string;
+  sell_price: number;
+  reduced_price: number;
+  buy_price: number; 
+  variants : {[key: string]: string[]};
+  is_listed: boolean;
+  meta_title_seo: string; 
+  meta_description_seo : string; 
+  created_at : string; 
+  updated_at : string;
+}
