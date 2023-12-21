@@ -8,6 +8,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3em;
+    
+    & > *{
+        min-width: 0px;
+    }
 }
 
 article{

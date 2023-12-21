@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../hooks/useFetch";
+import ProductModel from "../../models/ProductModel";
+import useArticle from "../../hooks/useArticle";
 
 export default function Article() {
-  let id: number | undefined;
+  const { article } = useArticle(useParams()["id"]) as {
+    article: ProductModel;
+  };
 
-  const param = useParams()["id"];
-
-  if (param !== undefined) {
-    id = parseInt(param);
-  }
-
-  let data = useFetch(`https://fakestoreapi.com/products${id}}`);
-  console.log(data);
-
-  return <div></div>;
+  return (
+    <div>
+      <img src={article?.image} alt={article?.title} />
+      <div className="infos">
+        <h3>{article?.title}</h3>
+        <p>{article?.category}</p>
+        <p>{article?.price}€</p>
+      </div>
+      <p className="desc">{article?.description}</p>
+      <button className="cta">Ajouter au panier</button>
+    </div>
+  );
 }

@@ -1,11 +1,10 @@
 interface ProductModel {
     id: number;
-    name: string;
-    brand: string;
+    title: string;
+    category: string;
     price: number;
     description: string;
-    color: string;
-    size: string[];
+    image: string;
 }
 
 export default ProductModel;
