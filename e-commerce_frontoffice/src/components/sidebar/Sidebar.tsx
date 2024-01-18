@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Checkbox from "../checkbox/Checkbox";
 
 export default function Sidebar() {

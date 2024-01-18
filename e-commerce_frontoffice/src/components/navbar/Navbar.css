@@ -3,11 +3,10 @@ nav{
     top: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 3em;
+    justify-content: space-around;
     background-color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
+    max-width: 100%;
     & img{
         width: 10em;
     }
@@ -45,15 +44,33 @@ nav{
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: .5em;
         & li{
-            padding: 1em 2em;
-            &:hover{
-                color: var(--secondary-color);
-                border-bottom: 1px solid var(--secondary-color);
-            }
+            font-size: large;
             & a{
-                text-decoration: none;
-                color: inherit;
+                padding: 1em;
+                width: 100%;
+                height: 100%;
+
+                &:hover{
+                    border-bottom: 1px solid var(--secondary-color);
+                }
+
+                &.active{
+                    border-bottom: 1px solid var(--accent-color);
+                }
+            }
+            & .cart-icon{
+                padding: .5em;
+                font-size: 1.5em;
+                &:hover{
+                    border-bottom: 0;
+                    color: var(--accent-color);
+                }
+                &.active{
+                    color: var(--accent-color);
+                    border-bottom: 0;
+                }
             }
         }
     }
