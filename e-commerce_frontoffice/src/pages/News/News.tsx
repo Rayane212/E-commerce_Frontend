@@ -20,7 +20,7 @@ export default function News() {
                 <div className="info">
                   <h3>{product.title}</h3>
                   <p>{product.category}</p>
-                  <span>{product.price}€</span>
+                  <span>{((product?.price * 100) / 100).toFixed(2)}€</span>
                 </div>
                 <button>
                   <FaOpencart />
