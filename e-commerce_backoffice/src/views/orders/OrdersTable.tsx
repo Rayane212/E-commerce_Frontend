@@ -3,7 +3,6 @@ import { Order } from '../../models/orders/Order';
 import NoResult from '../general/NoResult';
 import TableTitle from '../general/TableTitle';
 import TableList from '../general/TableList';
-import useOrdersTable from '../../services/orders/OrderService';
 import useOrders from '../../hooks/useOrders';
 import Loader from '../general/Loader';
 import OrdersListFilter from './OrdersList/OrdersListFilter';
