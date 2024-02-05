@@ -1,6 +1,5 @@
 import React, {useState, useEffect } from 'react'
 import { Order} from '../../models/orders/Order';
-import GetAllOrders from '../get_data/GetAllOrders';
 import FormatDate from '../general/FormatDate';
 
 export default function CreateOrder(formData: FormData) {

@@ -7,11 +7,11 @@ export default function FilterProducts(data: Product[]) {
   const out_of_stock_products = filterOutOfStockProducts(data); 
 
   function filterAvailableProducts(data: Product[]): Product[] {
-    return data.filter(product => product.available);
+    return data.filter(product => product.is_listed);
   }
 
   function filterUnvailableProducts(data: Product[]): Product[] {
-    return data.filter(product => !product.available);
+    return data.filter(product => !product.is_listed);
   }
 
   function filterOutOfStockProducts(data: Product[]): Product[] {

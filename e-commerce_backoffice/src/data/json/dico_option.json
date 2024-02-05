@@ -1,0 +1,10 @@
+{
+    "id_asc": "Par ID Croissant",
+    "id_desc": "Par ID Décroissant",
+    "name_asc": "Par Nom (A-Z)",
+    "name_desc": "Par Nom (Z-A)",
+    "price_asc": "Par Prix Croissant",
+    "price_desc": "Par Prix Décroissant",
+    "date_desc": "Le plus récent",
+    "date_asc": "Le plus ancien"
+  }

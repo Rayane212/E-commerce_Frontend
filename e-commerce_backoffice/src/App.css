@@ -135,6 +135,7 @@ label{
   color:white;
   border: solid 1px white;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .main_container{

@@ -19,11 +19,11 @@ const Menu_LeftBar: FC = () => {
   return (
     <ul>
       {menuItems.map((item, index) => (
-        <li key={index}>
-          <NavLink 
-          className={({ isActive }) => (isActive ? 'activeLink' : '')}
-          to={item.link as string}>{item.text}</NavLink>
-        </li>
+        <NavLink 
+        className={({ isActive }) => (isActive ? 'activeLink' : '')}
+        to={item.link as string} key={index}>
+          <li key={index}>{item.text}</li>
+        </NavLink>
       ))}
     </ul>
   );

@@ -33,7 +33,7 @@ function ProductsResearch(list: Product[], search: string) {
 
     function productNameSearch(value: string) {
       const productsResearch: Product[] = list.filter(product =>
-        product.title.toLowerCase().includes(value.toLowerCase())
+        (product.name as string).toLowerCase().includes(value.toLowerCase())
       );
       if (productsResearch.length === 0) {
         setIsResult(false);
@@ -45,7 +45,7 @@ function ProductsResearch(list: Product[], search: string) {
     }
     function productBrandSearch(value: string) {
       const productsResearch: Product[] = list.filter(product =>
-        product.supplier.toLowerCase().includes(value.toLowerCase())
+        (product.supplier as string).toLowerCase().includes(value.toLowerCase())
       );
       if (productsResearch.length === 0) {
         setIsResult(false);
@@ -57,7 +57,7 @@ function ProductsResearch(list: Product[], search: string) {
     }
     function productIDSearch(value: string) {
       const productsResearch: Product[] = list.filter(product =>
-        product.id.toString().includes(value)
+        (product.id as string).toString().includes(value)
       );
       if (productsResearch.length === 0) {
         return false;

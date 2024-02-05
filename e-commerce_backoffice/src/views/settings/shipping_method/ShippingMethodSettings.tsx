@@ -95,16 +95,16 @@ export default function ShippingMethodSettings() {
       }
     })
   }
-  useEffect(() => {
-    const shipping_methods_data = useSettings.getShippingMethodsInfos();
-    shipping_methods_data.then((data) => {
-      setState({
-          shipping_methods: data as ShippingMethod[],
-          toSave: []
-      });
-      console.log(data as ShippingMethod[])
-    })
-  }, [])
+  // useEffect(() => {
+  //   const shipping_methods_data = useSettings.getShippingMethodsInfos();
+  //   shipping_methods_data.then((data) => {
+  //     setState({
+  //         shipping_methods: data as ShippingMethod[],
+  //         toSave: []
+  //     });
+  //     console.log(data as ShippingMethod[])
+  //   })
+  // }, [])
 
   useEffect(() => {}, [state?.toSave])
   return (

@@ -42,7 +42,7 @@ const TableList: React.FC<TableListProps> = ({ customers, orders, products }) =>
             }}>
               <td className="tg-ycr8">{item.id}</td>
               <td className="tg-ycr8">{item.date}</td> 
-              <td className="tg-ycr8">{item.client}</td> 
+              {/* <td className="tg-ycr8">{item.client}</td>  */}
               <td className="tg-ycr8">{item.total}{currency[2]}</td>  
               <td className="tg-ycr8">{item.article_count}</td> 
               <td className="tg-ycr8">{item.shipping_method}</td> 
@@ -65,11 +65,11 @@ const TableList: React.FC<TableListProps> = ({ customers, orders, products }) =>
           {products.map((item: Product) => (
             <tr className='result_row' key={item.id}>
               <td className="tg-ycr8">{item.id}</td>
-              <td className="tg-ycr8">{item.title}</td> 
+              <td className="tg-ycr8">{item.name}</td> 
               <td className="tg-ycr8">{item.stock}</td> 
-              <td className="tg-ycr8">{item.available ? "Disponible" : "Indisponible"}</td>  
-              <td className="tg-ycr8">{item.price_on_sale}{currency[2]}</td> 
-              <td className="tg-ycr8">{item.price_regular}{currency[2]}</td> 
+              <td className="tg-ycr8">{item.is_listed ? "Disponible" : "Indisponible"}</td>  
+              <td className="tg-ycr8">{item.reduced_price}{currency[2]}</td> 
+              <td className="tg-ycr8">{item.sell_price}{currency[2]}</td> 
               <td className="tg-ycr8">{item.supplier}</td> 
             </tr>
           ))}

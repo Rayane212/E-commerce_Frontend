@@ -1,27 +1,27 @@
 import React from 'react'
 import { Product } from '../../models/products/Product';
 
-export default function CustomerSort(list: Product[], by:string, order:string) {
+export default function ProductSort(list: Product[], by:string, order:string) {
     const sortedProducts = list.slice().sort((a: Product, b: Product) => {
         if (by === 'id') {
             if (order === 'asc') {
-                return parseInt(a.id) - parseInt(b.id)
+                return parseInt(a.id as string) - parseInt(b.id as string)
             } else {
-                return parseInt(b.id) - parseInt(a.id)
+                return parseInt(b.id as string) - parseInt(a.id as string)
             }
         }
         else if (by === 'name') {
             if (order === 'asc') {
-                return a.title && b.title ? a.title.localeCompare(b.title) : 0
+                return a.name && b.name ? a.name.localeCompare(b.name) : 0
             } else {
-                return b.title && a.title ? b.title.localeCompare(a.title) : 0
+                return b.name && a.name ? b.name.localeCompare(a.name) : 0
             }
         }
         else if (by === 'price') {
             if (order === 'asc') {
-                return a.price_regular && b.price_regular ? parseInt(a.price_regular) - parseInt(b.price_regular) : 0
+                return a.sell_price && b.sell_price ? a.sell_price - b.sell_price  : 0
             } else {
-                return a.price_regular && b.price_regular ? parseInt(b.price_regular) - parseInt(a.price_regular) : 0
+                return a.sell_price && b.sell_price ? b.sell_price - a.sell_price : 0
             }
         }
         else if (by === 'stock') {
