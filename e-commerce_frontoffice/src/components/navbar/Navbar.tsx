@@ -1,6 +1,4 @@
-import React from "react";
-import { Outlet, Link, NavLink } from "react-router-dom";
-import "../../App.css";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { GiMagnifyingGlass } from "react-icons/gi";
 import { FaOpencart } from "react-icons/fa";
@@ -13,28 +11,28 @@ export default function Navbar() {
         <img src={logo} alt="" />
         <div className="searchbar">
           <input type="text" placeholder="Rechercher" />
-          <span className="search-icon" onClick={() => {
-            console.log("search");
-           }}><GiMagnifyingGlass /></span>
+          <span className="search-icon">
+            <GiMagnifyingGlass />
+          </span>
         </div>
         <ul>
           <li>
-            <NavLink to="/">Nouveautés</NavLink>
+            <Link to="/">Nouveautés</Link>
           </li>
           <li>
-            <NavLink to="/Men">Hommes</NavLink>
+            <Link to="/Men">Hommes</Link>
           </li>
           <li>
-            <NavLink to="/Women">Femmes</NavLink>
+            <Link to="/Women">Femmes</Link>
           </li>
-          <li >
-            <NavLink className="cart-icon" to="/Cart">
+          <li className="cart-icon">
+            <Link to="/Cart">
               <FaOpencart />
-            </NavLink>
+            </Link>
+            <div className="count">3</div>
           </li>
         </ul>
       </nav>
-      <Outlet />
     </div>
   );
 }

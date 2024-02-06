@@ -6,6 +6,7 @@ import StarRating from "../../components/starRating/StarRating";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
+import formatCurrency from "../../utils/formatCurrency";
 
 export default function Article() {
   const { article } = useArticle(useParams()["id"]) as {
@@ -31,7 +32,7 @@ export default function Article() {
         <div className="text">
           <h3>{article?.title}</h3>
           <span>{article?.category}</span>
-          <p>{((article?.price * 100) / 100).toFixed(2)}€</p>
+          <p>{formatCurrency(article?.price)}</p>
           <p className="desc">{article?.description}</p>
         </div>
         <div className="colors">

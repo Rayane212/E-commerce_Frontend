@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import { Routes, Route } from "react-router-dom";
@@ -7,20 +6,20 @@ import Men from "./pages/Men/Men";
 import Women from "./pages/Women/Women";
 import Cart from "./pages/Cart/Cart";
 import Article from "./pages/Article/Article";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
   return (
-    <div className="App">
+    <ShoppingCartProvider>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route index element={<News />} />
-          <Route path="/Men" element={<Men />} />
-          <Route path="/Women" element={<Women />} />
-          <Route path="/Cart" element={<Cart />} />
-          <Route path="/Article/:id" element={<Article />} />
-        </Route>
+        <Route path="/" element={<News />} />
+        <Route path="/Men" element={<Men />} />
+        <Route path="/Women" element={<Women />} />
+        <Route path="/Cart" element={<Cart />} />
+        <Route path="/Article/:id" element={<Article />} />
       </Routes>
-    </div>
+    </ShoppingCartProvider>
   );
 }
 
