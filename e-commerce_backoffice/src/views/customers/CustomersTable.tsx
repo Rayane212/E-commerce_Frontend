@@ -196,7 +196,7 @@ export default function CustomersTable() {
                 <div className='results'>
                     <table className='tg'>
                         <TableTitle list={tableHeaders}/>
-                        {state?.showList ? <TableList customers={state?.customers} orders={[]} products={[]}/>: null}
+                        {state?.showList && <TableList list={state?.customers}/>}
                     </table>
                     {!state?.showList ? <NoResult/> : null}
                 </div>

@@ -7,7 +7,7 @@ let isRequest : boolean = false;
 function GetAllCustomers(){
     if(isRequest){return []}
     isRequest = true;
-    const data : Customer [] = customers; 
+    const data : Customer [] = []; 
     isRequest = false;
     return data
 }

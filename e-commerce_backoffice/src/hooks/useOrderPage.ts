@@ -1,66 +1,92 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import { Order } from '../models/orders/Order'
 import { ShippingMethod } from '../models/ShippingMethod';
 import { Customer } from '../models/customers/Customer';
-import { useNavigate } from 'react-router-dom';
-import OrderService from '../services/orders/OrderService';
-import CustomerService from '../services/customers/CustomerService';
-import ShippingMethodService from '../services/shipping_method/ShippingMethodService';
+import useOrders from './useOrders';
+import useShippingMethods from './useShippingMethods';
+import useCustomers from './useCustomers';
 
 interface OrderState {
   order: Order,
   shipping_method : ShippingMethod, 
   customer: Customer,
-  isDataLoaded: boolean,
+  isLoading: boolean,
+  isDataLoaded: boolean
 }
 
 
+
+
+
 export default function useOrderPage() {
-    const [state, setState] = useState<OrderState>();
-    const order_id = window.location.pathname.split('/')[2];
-    const isLoadding = useRef(false); 
-    const navigate = useNavigate()
-  
-    function getOrderData(){
-        return OrderService?.getOrderById(order_id);
-        
+    const {orders, getOrderById} = useOrders();
+    const {shippingMethods, getShippingMethodsById} = useShippingMethods()
+    const {customerState, getCustomerById} = useCustomers()
+    const order_id = window.location.pathname.split("/")[2]
+    const [orderState, setOrderState] = useState<OrderState>({
+        order: {} as Order,
+        shipping_method: {} as ShippingMethod,
+        customer: {} as Customer,
+        isLoading: false,
+        isDataLoaded: false
+    });
+
+
+    function getOrder(id: string) {
+        const order = getOrderById(id)
+        return order
     }
 
-    function getShippingMethodData(order: Order){
-        return ShippingMethodService?.getShippingMethodByHandle(order?.shipping_method as string);
+    function getShippingMethod(id: string) {
+        const shippingMethod =  getShippingMethodsById(id)
+        return shippingMethod
+    }
+    
+    function getCustomer(id: string){
+        const customer =  getCustomerById(id)
+        return customer
     }
 
-    function getCustomerData(order: Order){
-        return CustomerService?.getCustomerById(order?.client_id as string);
-    }
+   const setLoading = useCallback((value: boolean) => {
+        setOrderState((prevState: any) =>({
+            ...prevState,
+            isLoading: value
+        }))
+   }, [])
+    
+    const setDatas = useCallback(() => {
+        const order = getOrder(order_id)
+        const customer = getCustomer(order?.client_id as string)
+        const shipping_method = getShippingMethod(order?.shipping_method_id as string)
+        if (shipping_method !== undefined && customer !== undefined && order !== undefined){
+            setOrderState({
+                order: order,
+                shipping_method: shipping_method,
+                customer: customer, 
+                isLoading: false,
+                isDataLoaded: true
+            })
+        }
+    }, [orders?.showList, customerState?.showList, shippingMethods?.showList])
 
+
+    
 
     useEffect(() => {
-        if (isLoadding.current) return;
-        isLoadding.current = true;
-        const order = getOrderData();
-        order.then(async (data) => {
-            if (data){
-                const shipping_method = (await getShippingMethodData(data as Order))[0];
-                const customer = getCustomerData(data as Order);
-                
-                if (shipping_method !== undefined && customer !== undefined) {
-                    setState({
-                        order: data as Order,
-                        shipping_method: shipping_method as ShippingMethod,
-                        customer: customer as Customer,
-                        isDataLoaded: true,
-                    })
-                }
-                else navigate("/orders")
-            }
-        })
-      
-      
-    }, [])
-
+       if (!orders?.showList || !customerState?.showList || !shippingMethods?.showList) return
+       else{
+        setLoading(true)
+       }
+    }, [orders?.showList, customerState?.showList, shippingMethods?.showList])
+    
+    useEffect(() => {
+        if (orderState?.isLoading === false) return
+        else{
+            setDatas()
+        }
+    }, [orderState?.isLoading])
 
     return {
-        state
+        orderState
     }
 }

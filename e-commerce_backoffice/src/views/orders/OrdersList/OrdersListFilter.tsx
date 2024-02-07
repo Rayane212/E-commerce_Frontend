@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import MapOptionsRecord from '../../general/MapOptionsRecord'
-import dico_options from '../../../data/json/dico_option.json';
 import useOrders from '../../../hooks/useOrders';
 
 type props = {
@@ -12,51 +11,32 @@ type props = {
 
 
 export default function OrdersListFilter({callback_filter, callback_search, callback_sort}: props) {
+    const optionsList = {
+        "id_asc": "Par ID Croissant",
+        "id_desc": "Par ID Décroissant",
+        "price_asc": "Par Prix Croissant",
+        "price_desc": "Par Prix Décroissant",
+        "date_desc": "Le plus récent",
+        "date_asc": "Le plus ancien"
+      }
 
     const dontRedirect = (e: any) => {
         e.preventDefault();
     }
 
-    const reinit_input = () => {
-        const input = document.getElementById('customer_research') as HTMLInputElement;
-        input.value = '';
-    }
-
-    const reinit_sort = () => {
-        const select = document.getElementById('sort_select') as HTMLSelectElement;
-        select.value = 'id_asc';
-    }  
+      
     const handleBtnClick = (event : React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
-        callback_filter(event);
-        reinit_input()
-        reinit_sort()
+        callback_filter(event.currentTarget.dataset.list);
     }
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
-        callback_search(event);
-        // const result_list = useOrdersTable.orderSearch(event);
-        // result_list.then((result) => {
-        //     if (result !== undefined && result !== false) {
-        //         setState({
-        //             orders: result,
-        //             searchValue: event.target.value,
-        //             selectedOption: state?.selectedOption as string,
-        //             showList: true
-        //         })
-        //         reinit_sort()
-        //     }
-        //     if (result === false){
-        //         setState({
-        //             orders: [],
-        //             searchValue: event.target.value,
-        //             selectedOption: state?.selectedOption as string,
-        //             showList: false
-        //         })
-        //         reinit_sort()
-        //     }
-        // })
-        
+        callback_search(event.target.value.trim());
+    }
+
+    const handleSelectChange = (event : React.ChangeEvent<HTMLSelectElement>) => {
+        event.preventDefault();
+        callback_sort(event.target.value as string);
     }
     
       
@@ -71,22 +51,22 @@ export default function OrdersListFilter({callback_filter, callback_search, call
                 <tr>
                 <td className="tg-ycr8">
                     <button className='filter__btn btn' id="all_order__btn" data-list="all_orders" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleBtnClick(e)}>
-                    Toutes les commandes
+                        Toutes les commandes
                     </button>
                 </td>
                 <td className="tg-ycr8">
                     <button className='filter__btn btn' id="processed_order__btn" data-list="processed_orders" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleBtnClick(e)}>
-                    Traitées
+                        Traitées
                     </button>
                 </td>
                 <td className="tg-ycr8">
                     <button className='filter__btn btn' id="unprocessed_order__btn" data-list="unprocessed_orders" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleBtnClick(e)}>
-                    Non Traitées
+                        Non Traitées
                     </button>
                 </td>
                 <td className="tg-0lax">
                     <button className='filter__btn btn' id="closed_order__btn" data-list="closed_orders" onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleBtnClick(e)}>
-                    Fermées
+                        Fermées
                     </button>
                 </td>
                 </tr>
@@ -96,7 +76,7 @@ export default function OrdersListFilter({callback_filter, callback_search, call
             <thead>
             <tr>
                 <td className="tg-ycr8 research_container">
-                    <input type="text" id="customer_research" placeholder="Rechercher..." onChange={(e:React.ChangeEvent<HTMLInputElement>)=> handleInputChange(e)}/>
+                    <input type="text" id="orders_research" placeholder="Rechercher..." onChange={(e:React.ChangeEvent<HTMLInputElement>)=> handleInputChange(e)}/>
                     <div className="date-input-container">
                         <input type="date" id="dateInput" name="dateInput" onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleInputChange(e)}/>
                         <FontAwesomeIcon className="i icon" icon={["fas", "calendar"]} />
@@ -109,8 +89,8 @@ export default function OrdersListFilter({callback_filter, callback_search, call
                         </button>
                     </a>
                     <div className='pop_up_sort sort_fields_container'>
-                        <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => callback_sort(e)} id='sort_select'>
-                            <MapOptionsRecord list={dico_options}/>
+                        <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleSelectChange(e)} id='sort_select'>
+                            <MapOptionsRecord list={optionsList}/>
                         </select>
                     </div>
                 </td>

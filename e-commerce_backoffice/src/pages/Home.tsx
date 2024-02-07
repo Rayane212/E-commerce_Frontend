@@ -16,9 +16,9 @@ function Home() {
                 isRecord={false}
                 optionsList={{}}
             />
-            <OrdersRecap/>
+            {/* <OrdersRecap/> */}
             <Customers_Recap/>
-            <ProductsRecap/>
+            {/* <ProductsRecap/> */}
         </div>
     )
 }

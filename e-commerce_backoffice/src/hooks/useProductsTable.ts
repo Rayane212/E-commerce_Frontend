@@ -11,11 +11,7 @@ class useProductsTable{
         return data;
     }
 
-    async asyncFilterProducts(){
-        const data = await this.GetProducts();
-        const filter_data = FilterProducts(data);
-        return {data, filter_data};
-    }
+    
 
     async productSearch(e: React.ChangeEvent<HTMLInputElement>){
         const searchValue = e.target.value;

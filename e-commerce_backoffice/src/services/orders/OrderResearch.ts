@@ -1,12 +1,13 @@
 import React from 'react'
 import { Order } from '../../models/orders/Order';
 import FormatDate from '../general/FormatDate';
+import useCustomers from '../../hooks/useCustomers';
 
 export interface OrderSearch {
     orders: Order[];
     isResult: boolean;
 }
-export default async function OrderResearch(search: string, list: Order[]) {
+export default async function OrderResearch(search: string, list: Order[], getCustomerById: any) {
     let orderSearch: OrderSearch = {
         orders: [],
         isResult: false
@@ -40,6 +41,18 @@ export default async function OrderResearch(search: string, list: Order[]) {
         if (isNaN(value)){ // Client
             try{
                 const result = searchByClient(search);
+                if (result.length > 0){
+                    setOrderSearch({
+                        orders: result,
+                        isResult: true
+                    });
+                }
+                else{
+                    setOrderSearch({
+                        orders: [],
+                        isResult: false
+                    });
+                }
 
             }
             catch(error){
@@ -82,16 +95,20 @@ export default async function OrderResearch(search: string, list: Order[]) {
     }
     function searchByClient(search: string){
         const ordersResearch: Order[] = list.filter(order =>
-            console.log(order)
-            // order.client.toLowerCase().includes(search.toLowerCase())
+            {
+                const customer = getCustomerById(order?.client_id);
+                const customerFullName = customer?.firstname + ' ' + customer?.lastname;
+                return customerFullName.toLowerCase().includes(search.toLowerCase())
+
+            }
           );
-        return []
+        return ordersResearch
           
     }   
     function searchByDate(search: Date){
         const formatedDate = FormatDate(search.toDateString());
         const ordersResearch: Order[] = list.filter(order =>
-            order.date.toString().includes(formatedDate.toString())
+            order?.created_at.toString().includes(formatedDate.toString())
         );
         return ordersResearch;
     }

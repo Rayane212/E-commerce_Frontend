@@ -1,7 +1,6 @@
 import { Product } from '../../models/products/Product';
 
 export default function FilterProducts(data: Product[]) {
-  const all_products = data;
   const available_products = filterAvailableProducts(data);
   const unavailable_products = filterUnvailableProducts(data);
   const out_of_stock_products = filterOutOfStockProducts(data); 

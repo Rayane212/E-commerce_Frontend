@@ -1,61 +1,44 @@
 import PageHeader from '../../general/page_header/PageHeader';
 import useOrderPage from '../../../hooks/useOrderPage';
+import useOrders from '../../../hooks/useOrders';
+import useShippingMethods from '../../../hooks/useShippingMethods';
+import useCustomers from '../../../hooks/useCustomers';
+import { Order } from '../../../models/orders/Order';
+import { ShippingMethod } from '../../../models/ShippingMethod';
+import { Customer } from '../../../models/customers/Customer';
+import Loader from '../../general/Loader';
+import { useEffect } from 'react';
 
 
 export default function OrderPage() {
-  const {state} = useOrderPage() 
+  const {orderState} = useOrderPage() 
 
 
   
-  if (state?.isDataLoaded) {
-    return (
-      <div className="main_container">
-        <PageHeader
-          title={"Commande n°" + state?.order?.id}
-          link=''
-          buttonTitle='Modifier la commande'
-          isButton={true}
-          isSelect={false}
-          isRecord={false}
-          optionsList={{}}
-        />
-        <div className='order_page'>
-          <div className='order_recap'>
-            <p className='order_recap_title'>Récapitulatif de la commande</p>
-            <table className='table full_width tg'>
-              <tr>
-                <td>1x Titre du produit</td>
-                <td>Prix d'achat</td>
-              </tr>
-              <tr>
-                <td>{state?.shipping_method?.title}</td>
-                <td>{state?.shipping_method?.price}€</td>
-              </tr>
-            </table>
-          </div>
-          <div className='right_bar order_page_right_bar'>
-            <div className='order_page_right_bar_content'>
-              <p className='order_page_right_bar_title'>Statut de la commande</p>
-              <p className='order_page_right_bar_text'>{}</p>
-            </div>
-            <div className='order_page_right_bar_content'>
-              <p className='order_page_right_bar_title'>Date de la commande</p>
-              <p className='order_page_right_bar_text'>{state?.order?.date}</p>
-            </div>
-            <div className='order_page_right_bar_content'>
-              <p className='order_page_right_bar_title'>Total</p>
-              <p className='order_page_right_bar_text'>{state?.order?.total}€</p>
-            </div>
+  if (orderState?.isLoading === false)  {
+    if (orderState?.isDataLoaded === false) return (<></>)
+    else{
+      return (
+        <div className="main_container">
+          <PageHeader
+            title={"Commande n°" + orderState?.order?.id}
+            link=''
+            buttonTitle='Modifier la commande'
+            isButton={true}
+            isSelect={false}
+            isRecord={false}
+            optionsList={{}}
+          />
+          <div className='order_page'>
+            <button className='order_page_button' onClick={() => {console.log(orderState)}}>Test</button>
           </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
   else{
     return (
-      <div className="main_container">
-        Aucun Résultat
-      </div>
+      <Loader/>     
     )
   }
 }

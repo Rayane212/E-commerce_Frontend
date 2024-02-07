@@ -1,36 +1,46 @@
-export default function SortList (list: any[], by: string, order: string){
+export default function SortList (list: any[], sort_type: string, sort_order: string, sort_key:string){
+
+    function createDateFromString(dateString: string) {
+        const [day, month, year] = dateString.split('/');
+        const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+        return date;
+    }
+        
+    const sortTypeNumber = (a: any, b: any, sort_order: string) => {
+        return sort_order === 'asc' ? parseInt(a[sort_key as keyof typeof a]) - parseInt(b[sort_key as keyof typeof b]) : parseInt(b[sort_key as keyof typeof b]) - parseInt(a[sort_key as keyof typeof a]);
+    };
+
+    const sortTypeText = (a: any, b: any, sort_order: string) => {
+        const aText = a[sort_key as keyof typeof a];
+        const bText = b[sort_key as keyof typeof b];
+        return sort_order === 'asc' ? aText.localeCompare(bText) : bText.localeCompare(aText);
+    };
+    
+    
+    const sortTypeDate = (a: any, b: any, sort_order: string) => {
+        const aDate = sort_key ? createDateFromString(a[sort_key as keyof typeof a]) : createDateFromString(a.date);
+        const bDate = sort_key ? createDateFromString(b[sort_key as keyof typeof b]) : createDateFromString(b.date);
+        if (sort_order === 'asc') {
+            return aDate.getTime() - bDate.getTime();
+        } else {
+            return bDate.getTime() - aDate.getTime();
+        }
+    };
+    
+    
+    
+    
+    const sortFunctions: { [key: string]: Function } = {
+        'id': sortTypeNumber,
+        'name': sortTypeText,
+        'price': sortTypeNumber,
+        'date': sortTypeDate,
+        'stock': sortTypeNumber
+    };
+    
     const sortedList = list.slice().sort((a: any, b: any) => {
-        if (by === 'id') {
-            if (order === 'asc') {
-                return parseInt(a.id) - parseInt(b.id)
-            } else {
-                return parseInt(b.id) - parseInt(a.id)
-            }
-        }
-        // else if (by === 'name') {
-        //     if (order === 'asc') {
-        //         return a.client && b.client ? a.client.localeCompare(b.client) : 0
-        //     } else {
-        //         return b.client && a.client ? b.client.localeCompare(a.client) : 0
-        //     }
-        // }
-        else if (by === 'price') {
-            if (order === 'asc') {
-                return a.total && b.total ? parseInt(a.total) - parseInt(b.total) : 0
-            } else {
-                return a.total && b.total ? parseInt(b.total) - parseInt(a.total) : 0
-            }
-        }
-        else if (by === 'date') {
-            if (order === 'asc') {
-                return a.date && b.date ? b.date.localeCompare(a.date) : 0
-            } else {
-                return a.date && b.date ? a.date.localeCompare(b.date) : 0
-            }
-        }
-        else {
-            return 0
-        }
-    });
+        const sortFunction = sortFunctions[sort_type];
+        return sortFunction ? sortFunction(a, b, sort_order) : undefined;
+    });    
     return sortedList;
 }

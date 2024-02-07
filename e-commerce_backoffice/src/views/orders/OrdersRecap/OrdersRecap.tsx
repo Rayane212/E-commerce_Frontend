@@ -1,27 +1,19 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
-import OrderService from '../../../services/orders/OrderService';
-import { Order } from '../../../models/orders/Order';
 import useOrdersRecap from '../../../hooks/useOrdersRecap';
+import { OrderState } from '../../../hooks/useOrders';
 
-
-
-const OrdersRecap: FC = () => {
-  const { states } = useOrdersRecap()
+export default function OrdersRecap({orders}: {orders: OrderState}) {
+  const { recapValues } = useOrdersRecap(orders?.orders?.all_orders)
 
   return (
       <div className='recap_container'>
-        <table className="tg recap_table">
-          <thead>
-            <tr>
-              <td className="tg-ycr8"><span className='text_count'>{states?.order_count}</span> <br></br>Commandes </td>
-              <td className="tg-ycr8"><span className='text_count'>{states?.total_order_count}{states?.currency[2]}</span> <br></br>Ventes Totales</td>
-              <td className="tg-ycr8"><span className='text_count'>{states?.article_count}</span> <br></br>Articles Commandés</td>
-              <td className="tg-ycr8"><span className='text_count'>{states?.order_process_count}</span> <br></br>Commandes Traités</td>
-              <td className="tg-ycr8 no_right_border"><span className='text_count '>{states?.order_delivered_count}</span> <br></br>Commandes Livrés</td>
-            </tr>
-          </thead>
-        </table>
+        <div className='recap_table shadow'>
+          <div className="recap_table_col"><span className='text_count'>{recapValues?.order_count}</span>Commandes </div>
+          <div className="recap_table_col"><span className='text_count'>{recapValues?.total_order_count}{recapValues?.currency[2]}</span>Ventes Totales</div>
+          <div className="recap_table_col"><span className='text_count'>{recapValues?.article_count}</span>Articles Commandés</div>
+        </div>
     </div>
   )
 }
-export default OrdersRecap;
+
+
+

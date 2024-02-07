@@ -1,25 +1,18 @@
 import React from 'react'
 import GetAllProducts from '../../services/get_data/GetAllProducts'
 import FilterProducts from '../../services/products/FilterProducts';
+import { ProductState } from '../../hooks/useProducts';
 
-export default function ProductsRecap() {
-    const all_products = GetAllProducts();
-    const filtered_products = FilterProducts(all_products)
-    const availableProducts = filtered_products.available_products;
-    const unavailableProducts = filtered_products.unavailable_products;
-    const outOfStockProducts = filtered_products.out_of_stock_products;
+export default function ProductsRecap({values} : {values: ProductState}) {
+    
   return (
     <div className='recap_container'>
-        <table className="tg recap_table">
-          <thead>
-            <tr>
-              <td className="tg-ycr8"><span className='text_count'>{all_products.length}</span> <br></br>Produit(s) </td>
-              <td className="tg-ycr8"><span className='text_count'>{availableProducts.length}</span> <br></br> disponibles</td>
-              <td className="tg-ycr8"><span className='text_count'>{unavailableProducts.length}</span> <br></br>indisponibles</td>
-              <td className="tg-ycr8 no_right_border"><span className='text_count '>{outOfStockProducts.length}</span> <br></br>stocks épuisés</td>
-            </tr>
-          </thead>
-        </table>
+      <div className='recap_table shadow'>
+        <div className="recap_table_col"><span className='text_count'>{values?.products?.all_products.length}</span>Produit(s) </div>
+        <div className="recap_table_col"><span className='text_count'>{values?.products?.filteredList?.available_products.length}</span>Disponibles</div>
+        <div className="recap_table_col"><span className='text_count'>{values?.products?.filteredList?.unavailable_products.length}</span>Indisponibles</div>
+        <div className="recap_table_col"><span className='text_count '>{values?.products?.filteredList?.out_of_stock_products.length}</span>Stocks Épuisés</div>
+      </div>
     </div>
   )
 }

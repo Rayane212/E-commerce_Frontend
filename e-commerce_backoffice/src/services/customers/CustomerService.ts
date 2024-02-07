@@ -43,6 +43,8 @@ class CustomerService{
 
   CustomerSort(list: Customer[], by:string, order:string) {
       const sortedCustomers = list.slice().sort((a: Customer, b: Customer) => {
+        const a_name = a.lastname + a.firstname;
+        const b_name = b.lastname + b.firstname;
           if (by === 'id') {
               if (order === 'asc') {
                   return parseInt(a.id) - parseInt(b.id)
@@ -52,9 +54,9 @@ class CustomerService{
           }
           else if (by === 'name') {
               if (order === 'asc') {
-                  return a.name && b.name ? a.name.localeCompare(b.name) : 0
+                  return a_name && b_name ? a_name.localeCompare(b_name) : 0
               } else {
-                  return b.name && a.name ? b.name.localeCompare(a.name) : 0
+                  return b_name && a_name ? b_name.localeCompare(a_name) : 0
               }
           }
           else if (by === 'total') {
@@ -196,7 +198,7 @@ class CustomerService{
   getCustomerByName(name: string) {
     const data = GetAllCustomers();
     const customersResearch: Customer[] = data.filter(customer =>
-      customer.name.toString().includes(name)
+      (customer?.lastname + customer?.firstname).toString().includes(name)
     );
     if (customersResearch.length === 0) {
       return false;

@@ -1,13 +1,24 @@
 [
     {
         "id": "1",
-        "name": "Hamza Sabil",
+        "lastname": "Sabil",
+        "firstname": "Hamza",
+        "email": "hamzasabil@gmail.com",
+        "phone_number": "0612345678",
+        "marketing": true,
+        "address": {
+            "number": "1",
+            "street": "Rue de la paix",
+            "city": "Paris",
+            "zip_code": "75000",
+            "country": "France"
+        },
         "order_before": true,
         "orders_count": "1",
         "total_article_count": "1",
         "total_order_amount": "34.98",
-        "email": "hamzasabil@gmail.com",
-        "marketing": true
+        "created_at": "2021-01-01",
+        "updated_at": "2021-01-01"
     },
     {
         "id": "2",

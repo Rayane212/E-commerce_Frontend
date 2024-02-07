@@ -1,0 +1,34 @@
+.pagination_container{
+    margin: 20px 0;
+}
+
+.pagination_container ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination_container ul li{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pagination_container ul li button{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.pagination_container ul .index_active button{
+    border-bottom: solid 1px #000;
+}
