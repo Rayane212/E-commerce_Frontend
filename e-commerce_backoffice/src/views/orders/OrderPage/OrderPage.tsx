@@ -11,17 +11,17 @@ import { useEffect } from 'react';
 
 
 export default function OrderPage() {
-  const {orderState} = useOrderPage() 
+  const {orders} = useOrderPage() 
 
 
   
-  if (orderState?.isLoading === false)  {
-    if (orderState?.isDataLoaded === false) return (<></>)
+  if (orders?.isLoading === false)  {
+    if (orders?.isDataLoaded === false) return (<></>)
     else{
       return (
         <div className="main_container">
           <PageHeader
-            title={"Commande n°" + orderState?.order?.id}
+            title={"Commande n°" + orders?.order?.id}
             link=''
             buttonTitle='Modifier la commande'
             isButton={true}
@@ -30,7 +30,7 @@ export default function OrderPage() {
             optionsList={{}}
           />
           <div className='order_page'>
-            <button className='order_page_button' onClick={() => {console.log(orderState)}}>Test</button>
+            <button className='order_page_button' onClick={() => {console.log(orders)}}>Test</button>
           </div>
         </div>
       )

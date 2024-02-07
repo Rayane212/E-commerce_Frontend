@@ -7,7 +7,8 @@ export interface OrderSearch {
     orders: Order[];
     isResult: boolean;
 }
-export default async function OrderResearch(search: string, list: Order[], getCustomerById: any) {
+
+export default function OrderResearch(search: string, list: Order[], getCustomerById: any) {
     let orderSearch: OrderSearch = {
         orders: [],
         isResult: false
@@ -106,6 +107,7 @@ export default async function OrderResearch(search: string, list: Order[], getCu
           
     }   
     function searchByDate(search: Date){
+        console.log(search.toDateString());
         const formatedDate = FormatDate(search.toDateString());
         const ordersResearch: Order[] = list.filter(order =>
             order?.created_at.toString().includes(formatedDate.toString())

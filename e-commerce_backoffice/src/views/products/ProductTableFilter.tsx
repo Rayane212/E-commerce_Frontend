@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type FilterProps = {
     handleFilter: any;
-    sort_view: any;
+    handleSort: any;
     handleSearch: any;
     optionsList: Record<string, string>;
 }
 
 
-export default function ProductTableFilter({handleFilter, sort_view, handleSearch, optionsList}: FilterProps) {
+export default function ProductTableFilter({handleFilter, handleSort, handleSearch, optionsList}: FilterProps) {
     const dontRedirect = (e: any) => {
         e.preventDefault();
     }
@@ -55,7 +55,7 @@ export default function ProductTableFilter({handleFilter, sort_view, handleSearc
                                     </button>
                                 </a>
                                 <div className='pop_up_sort sort_fields_container'>
-                                    <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => sort_view(e)} id='sort_select'>
+                                    <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleSort(e.target.value)} id='sort_select'>
                                         <MapOptionsRecord list={optionsList}/>
                                     </select>
                                 </div>

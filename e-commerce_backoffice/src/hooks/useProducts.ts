@@ -3,6 +3,7 @@ import { Product } from '../models/products/Product';
 import FilterProducts from '../services/products/FilterProducts';
 import { apiFetch } from '../services/apiFetch';
 import SortList from '../services/general/SortList';
+import { PaginationState } from './usePagination';
 
 
 export type ProductState = {
@@ -14,10 +15,6 @@ export type ProductState = {
         all_products: Product[];
         filteredList: FilteredProducts; 
     };
-    pagination: {
-        currentPage: number;
-        itemsPerPage: number;
-    }
     isLoading: boolean;
     isDataLoaded: boolean;
     isTableLoading: boolean | undefined;
@@ -45,10 +42,6 @@ export default function useProducts() {
                 out_of_stock_products: []
             }
         },
-        pagination:{
-            currentPage: 1,
-            itemsPerPage: 10
-        },
         isLoading: false,
         isDataLoaded: false,
         showList: false,
@@ -64,50 +57,22 @@ export default function useProducts() {
         'stock': 'stock'
     }
 
-
-    const handlePagination = (newPage: string, pagineBy: string) => {
-        const start = (productState?.pagination?.currentPage - 1) * productState?.pagination?.itemsPerPage;
-        const end = start + productState?.pagination?.itemsPerPage;
-        const paginatedList = productState.products.activeList?.allList.slice(start, end);
-        setProductState((prevState: any) => ({
-            ...prevState,
-            products: {
-                ...prevState.products,
-                activeList: {
-                    ...prevState.products.activeList,
-                    slicedList: paginatedList
-                }
-            },
-            pagination: {
-                ...prevState.pagination,
-                currentPage: parseInt(newPage),
-                itemsPerPage: parseInt(pagineBy)
-            }
-        }))
-    }
-
-    const paginateList = (list: any) => {
-        return list.slice(0, 10);
-    }
-    
-    function filterProducts(data:Product[]){
-        const filter_data = FilterProducts(data);
-        return filter_data;
-    }
-
     function GetProducts() {
         setProductState((prevState: any) => ({
             ...prevState,
             isLoading: true,
+            isDataLoaded: false,
+            isTableLoading: true
         }));
         apiFetch('products/get', {method: 'GET'})
         .then((result:any) => {
             if (result !== undefined) {
                 const filteredProducts = filterProducts(result) as FilteredProducts;
-                setProductState((prevState: any) => ({
+                setTimeout(() => setProductState((prevState: any) => ({
                     ...prevState,
                     isLoading: false,
                     isDataLoaded: true,
+                    isTableLoading: false,
                     showList: true,
                     products: {
                         activeList: {
@@ -116,12 +81,40 @@ export default function useProducts() {
                         },
                         all_products: result,
                         filteredList: filteredProducts
-                    }
-                }))
+                    },
+
+                })), 100)
             }
         })
     }
 
+
+    function filterProducts(data:Product[]){
+        const filter_data = FilterProducts(data);
+        return filter_data;
+    }
+
+    const handlePagination = (state: PaginationState) => {
+        const start = (state.currentPage - 1) * state.itemsPerPage;
+        const end = start + state.itemsPerPage;
+        const paginatedList = productState.products.activeList.allList.slice(start, end);
+        setProductState((prevState: ProductState) => ({
+            ...prevState,
+            products: {
+                ...prevState.products,
+                activeList: {
+                    ...prevState.products.activeList,
+                    slicedList: paginatedList
+                }
+            }
+        }))
+    }
+    const paginateList = (list: any) => {
+        return list.slice(0, 10);
+    }
+    
+
+    
     const filter_view = (filter_type: string) => {
         if (filter_type === 'all_products'){
             setProductState((prevState: any) => ({
@@ -129,7 +122,7 @@ export default function useProducts() {
                 products: {
                     ...prevState.products,
                     activeList: {
-                        slicedList: paginateList(prevState.products.all_products),
+                        ...prevState.products.activeList,
                         allList: prevState.products.all_products
                     }
                 }
@@ -141,25 +134,23 @@ export default function useProducts() {
                 products: {
                     ...prevState.products,
                     activeList: {
-                        slicedList: paginateList(prevState.products.filteredList[filter_type as keyof typeof prevState.products.filteredList]),
+                        ...prevState.products.activeList,
                         allList: prevState.products.filteredList[filter_type as keyof typeof prevState.products.filteredList]
                     }
                 }
             }))
         }
-        handlePagination('1', '10');
-    }
+    } 
 
     const tableLoader = (value: boolean) => {
-        setProductState((prevState: any) => ({
+        setProductState((prevState: ProductState) => ({
             ...prevState,
             isTableLoading: value,
             tableLoaded: !value
         }))
     }
 
-    const sort_view = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedOption = e.target.value;
+    const sort_view = (selectedOption: string) => {
         const index_for_slice = selectedOption.indexOf('_');
         const sortOptions = {
             sort_by: selectedOption.slice(0, index_for_slice),
@@ -179,7 +170,6 @@ export default function useProducts() {
                 }
             }))
         }
-        handlePagination('1', '10');
     }
 
     const search_view = (searchValue: string) => {

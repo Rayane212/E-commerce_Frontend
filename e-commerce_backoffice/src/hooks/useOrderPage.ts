@@ -19,11 +19,11 @@ interface OrderState {
 
 
 export default function useOrderPage() {
-    const {orders, getOrderById} = useOrders();
+    const {orderState, getOrderById} = useOrders();
     const {shippingMethods, getShippingMethodsById} = useShippingMethods()
     const {customerState, getCustomerById} = useCustomers()
     const order_id = window.location.pathname.split("/")[2]
-    const [orderState, setOrderState] = useState<OrderState>({
+    const [orders, setOrders] = useState<OrderState>({
         order: {} as Order,
         shipping_method: {} as ShippingMethod,
         customer: {} as Customer,
@@ -48,7 +48,7 @@ export default function useOrderPage() {
     }
 
    const setLoading = useCallback((value: boolean) => {
-        setOrderState((prevState: any) =>({
+        setOrders((prevState: any) =>({
             ...prevState,
             isLoading: value
         }))
@@ -59,7 +59,7 @@ export default function useOrderPage() {
         const customer = getCustomer(order?.client_id as string)
         const shipping_method = getShippingMethod(order?.shipping_method_id as string)
         if (shipping_method !== undefined && customer !== undefined && order !== undefined){
-            setOrderState({
+            setOrders({
                 order: order,
                 shipping_method: shipping_method,
                 customer: customer, 
@@ -67,26 +67,26 @@ export default function useOrderPage() {
                 isDataLoaded: true
             })
         }
-    }, [orders?.showList, customerState?.showList, shippingMethods?.showList])
+    }, [orderState?.showList, customerState?.showList, shippingMethods?.showList])
 
 
     
 
     useEffect(() => {
-       if (!orders?.showList || !customerState?.showList || !shippingMethods?.showList) return
+       if (!orderState?.showList || !customerState?.showList || !shippingMethods?.showList) return
        else{
         setLoading(true)
        }
-    }, [orders?.showList, customerState?.showList, shippingMethods?.showList])
+    }, [orderState?.showList, customerState?.showList, shippingMethods?.showList])
     
     useEffect(() => {
-        if (orderState?.isLoading === false) return
+        if (orders?.isLoading === false) return
         else{
             setDatas()
         }
-    }, [orderState?.isLoading])
+    }, [orders?.isLoading])
 
     return {
-        orderState
+        orders
     }
 }

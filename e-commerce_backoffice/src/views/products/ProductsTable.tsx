@@ -10,51 +10,23 @@ import { ProductState } from '../../hooks/useProducts';
 import ProductTableFilter from './ProductTableFilter';
 import Loader from '../general/Loader';
 import Pagination from '../general/pagination/Pagination';
+import { PaginationState } from '../../hooks/usePagination';
 
 
 interface TableProps {
     productState : ProductState;
-    filter__view: any;
-    sort_view: any;
-    search_view: any;
-    tableLoading: any;
-    handlePagination: any;
+    callback_filter: any;
+    callback_search: any;
+    callback_sort: any;
     optionsList: Record<string, string>;
     tableHeaders: string[];
 }
 
-export default function ProductsTable({ productState, filter__view, sort_view, search_view, tableLoading, optionsList, tableHeaders, handlePagination }: TableProps) { 
+export default function ProductsTable({ productState, callback_filter, callback_search, callback_sort, optionsList, tableHeaders }: TableProps) { 
     const columnsKeys = ['id', 'name', 'stock', 'is_listed', 'sell_price', 'supplier'];
     
     
-    const handleSearch = (searchValue : string) => {
-        if (searchValue !== '') {
-            tableLoading(true);
-            setTimeout(() => {
-                search_view(searchValue);
-                tableLoading(false);
-            }, 100);
-        }
-        else{
-            search_view(searchValue);
-        }
-    }
-
-    const handleFilter = (filterValue : string) => {
-        tableLoading(true);
-        setTimeout(() => {
-            filter__view(filterValue);
-            tableLoading(false);
-        }, 100);
-        reinitInputs();
-    }
-
-    const reinitInputs = () => {
-        const searchInput = document.getElementById('products_research') as HTMLInputElement;
-        const sortSelect = document.getElementById('sort_select') as HTMLSelectElement;
-        searchInput.value = '';
-        sortSelect.value = 'id_asc';
-    }
+    
       
 
     const tableComponent = () => {
@@ -73,11 +45,10 @@ export default function ProductsTable({ productState, filter__view, sort_view, s
     
     return (
         <div className='table_container'>
-            <ProductTableFilter handleFilter={handleFilter} sort_view={sort_view} handleSearch={handleSearch} optionsList={optionsList}/>
+            <ProductTableFilter handleFilter={callback_filter} handleSort={callback_sort} handleSearch={callback_search} optionsList={optionsList}/>
             <div className='table_list'>
                 {!productState?.isTableLoading && productState.tableLoaded ? tableComponent() : <Loader/>}
             </div>
-            <Pagination listLength={parseInt((productState?.products?.activeList?.allList.length).toString())} tableLoading={tableLoading} callback_pagination={handlePagination} options={productState?.pagination}/>
         </div>
         
     )
