@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "name": "Hamza Sabil",
+        "mail": "hamzasabil@gmail.com", 
+        "phone": "0712345678", 
+        "username": "hamzasabil", 
+        "last_connexion": "Vendredi 15 décembre 2023"
+    },
+    {
+        "id":"2",
+        "name": "Romain Liennhart",
+        "mail": "romainliennhart@gmail.com", 
+        "phone": "0712345678", 
+        "username": "romainliennhart", 
+        "last_connexion": "Vendredi 15 décembre 2023"
+    },
+    {
+        "id":"3",
+        "name": "Rayane Hadi",
+        "mail": "rayanehadi@gmail.com", 
+        "phone": "0712345678", 
+        "username": "rayanehadi", 
+        "last_connexion": "Vendredi 15 décembre 2023"
+    },
+    {
+        "id":"4",
+        "name": "Mohamed Lamine",
+        "mail": "mohamedlamine@gmail.com", 
+        "phone": "0712345678", 
+        "username": "mohamedlamine", 
+        "last_connexion": "Vendredi 15 décembre 2023"
+    }
+]

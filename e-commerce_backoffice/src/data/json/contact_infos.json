@@ -1,0 +1,11 @@
+{
+    "shop_email": "contact@boutique.com",
+    "shop_phone": "0612345678",
+    "shop_opening_hours": "Du lundi au vendredi de 9h à 18h",
+    "shop_address_number": "2",
+    "shop_address_street": "place de l'Europe",
+    "shop_address_zipcode": "31000",
+    "shop_address_city": "Toulouse",
+    "shop_address_state": "Occitanie",
+    "shop_address_country": "France"
+}

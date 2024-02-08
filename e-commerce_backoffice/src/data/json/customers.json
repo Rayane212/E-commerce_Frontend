@@ -1,0 +1,64 @@
+[
+    {
+        "id": "1",
+        "lastname": "Sabil",
+        "firstname": "Hamza",
+        "email": "hamzasabil@gmail.com",
+        "phone_number": "0612345678",
+        "marketing": true,
+        "address": {
+            "number": "1",
+            "street": "Rue de la paix",
+            "city": "Paris",
+            "zip_code": "75000",
+            "country": "France"
+        },
+        "order_before": true,
+        "orders_count": "1",
+        "total_article_count": "1",
+        "total_order_amount": "34.98",
+        "created_at": "2021-01-01",
+        "updated_at": "2021-01-01"
+    },
+    {
+        "id": "2",
+        "name": "Romain Lienhart",
+        "order_before": true,
+        "orders_count": "1",
+        "total_article_count": "3",
+        "total_order_amount": "89.97",
+        "email": "romainlienhart@gmail.com",
+        "marketing": false
+    },
+    {
+        "id": "3",
+        "name": "Rayan Hadi",
+        "order_before": true,
+        "orders_count": "1",
+        "total_article_count": "2",
+        "total_order_amount": "59.98",
+        "email": "rayanhadi@gmail.com",
+        "marketing": true
+    },
+    {
+        "id": "4",
+        "name": "Mohamed Lamine",
+        "order_before": true,
+        "orders_count": "1",
+        "total_article_count": "1",
+        "total_order_amount": "29.99",
+        "email": "mohamedlamine@gmail.com",
+        "marketing": false
+    },
+    {
+        "id": "5",
+        "name": "Test Test",
+        "order_before": false,
+        "orders_count": "0",
+        "total_article_count": "0",
+        "total_order_amount": "0",
+        "email": "test@gmail.com",
+        "marketing": false
+    }
+  ]
+  

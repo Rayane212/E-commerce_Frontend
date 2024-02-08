@@ -1,0 +1,52 @@
+
+.section_settings_container{
+    margin:10px;
+    background-color: var(--background-color);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    width:calc(50% + 300px);
+}
+.settings_container_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 20px;
+}
+
+.btn_container{
+    display: flex;
+    justify-content: center;
+}
+
+.admin_head{
+    width: 100%;
+    position:relative;
+    left:5vh;
+}
+.admin_info_row{
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+    margin:10px;
+}
+.admins_list_container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 15em;
+}
+
+.admin_row_text > p{
+    margin:5px 0;
+}
+
+
+.settings_container{
+    display:flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
+    margin: 30px 0;
+}
