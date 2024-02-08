@@ -1,0 +1,101 @@
+[
+    {
+      "id": "1",
+      "name": "Produit 1",
+      "description": "Description du produit 1",
+      "on_sale": true,
+      "stock": "200",
+      "category": "T-shirt",
+      "supplier": "Nike",
+      "sell_price": "39.99",
+      "reduced_price": "29.99",
+      "is_listed": true,
+      "variants": {
+        "color": ["red", "blue", "green"],
+        "size": ["S", "M", "L", "XL"]
+      },
+      "meta_title_seo": "Produit 1",
+      "meta_description_seo": "Description du produit 1",
+      "created_at": "2021-01-01",
+      "updated_at": "2021-01-02"
+    },
+    {
+      "id": "2",
+      "name": "Produit 2",
+      "description": "Description du produit 2",
+      "on_sale": false,
+      "stock": "500",
+      "category": "Vestes",
+      "supplier": "North Face",
+      "sell_price": "59.99",
+      "reduced_price": "49.99",
+      "is_listed": true,
+      "variants": {
+        "color": ["black", "blue", "green"],
+        "size": ["S", "M", "L", "XL"]
+      },
+      "meta_title_seo": "Produit 2",
+      "meta_description_seo": "Description du produit 2",
+      "created_at": "2021-01-01",
+      "updated_at": "2021-01-02"
+    },
+    {
+      "id": "3",
+      "name": "Produit 3",
+      "description": "Description du produit 3",
+      "on_sale": false,
+      "stock": "0",
+      "category": "Pantalons",
+      "supplier": "Levis",
+      "sell_price": "19.99",
+      "reduced_price": "9.99",
+      "is_listed": false,
+      "variants": {
+        "color": ["black", "blue", "green"],
+        "size": ["S", "M", "L", "XL"]
+      },
+      "meta_title_seo": "Produit 3",
+      "meta_description_seo": "Description du produit 3",
+      "created_at": "2021-01-01",
+      "updated_at": "2021-01-02"
+    },
+    {
+      "id": "4",
+      "name": "Produit 4",
+      "description": "Description du produit 4",
+      "on_sale": false,
+      "stock": "100",
+      "category": "Chaussures",
+      "supplier": "Adidas",
+      "sell_price": "89.99",
+      "reduced_price": "69.99",
+      "is_listed": true,
+      "variants": {
+        "color": ["black", "blue", "green"],
+        "size": ["S", "M", "L", "XL"]
+      },
+      "meta_title_seo": "Produit 4"
+    },
+    {
+      "id": "5",
+      "name": "Produit 5",
+      "description": "Description du produit 5",
+      "on_sale": true,
+      "stock": "300",
+      "category": "Chaussures",
+      "supplier": "Nike",
+      "sell_price": "99.99",
+      "reduced_price": "79.99",
+      "is_listed": true,
+      "variants": {
+        "color": ["black", "blue", "green"],
+        "size": ["S", "M", "L", "XL"]
+      },
+      "meta_title_seo": "Produit 5",
+      "meta_description_seo": "Description du produit 5",
+      "created_at": "2021-01-01",
+      "updated_at": "2021-01-02"
+    }
+    
+  ]
+  

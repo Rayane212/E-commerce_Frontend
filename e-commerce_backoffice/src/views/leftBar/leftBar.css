@@ -1,0 +1,63 @@
+.left-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--background-color_primary);
+    width: 25vh; 
+    height: 100vh;
+}
+
+.nav-menu{
+    display: flex;
+    height: 70%; 
+}
+
+.nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.nav-menu ul li{
+    list-style: none;
+    padding:10px 15px;
+}
+
+.nav-menu ul a{
+    color:black;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.nav-logout{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.nav-logout ul{
+    padding:5px 0px;
+}
+
+.nav-logout ul li{
+    list-style: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding:5px 15px;
+}
+
+.admin-name{
+    background-color: var(--background-color_second);
+    color:black;
+}
+
+.nav-logout ul li a{
+    text-decoration: none;
+    color:black;
+}
+
+.activeLink{
+    background-color: var(--background-color_second);
+}

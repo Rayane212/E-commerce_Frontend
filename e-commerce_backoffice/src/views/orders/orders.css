@@ -1,0 +1,84 @@
+
+.orders_list{
+    margin: 0 10px;
+}
+
+.orders > table{
+    width: 100%;
+}
+
+.order_row{
+    background-color: var(--background-color);
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+}
+.order_row td{
+    border-top: 1px solid #000; 
+    font-size: 0.9em!important;
+}
+.table_header_orders{
+    background-color:var(--background-color-2);
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+    color:white;
+}
+
+.table_header_orders td{
+    border-top: none!important;
+    padding: 5px 10px!important;
+    font-size: 0.8em!important;
+}
+
+.option_active > .pop_up_sort_order{
+    display: flex!important;
+}
+
+.create_order_container{
+    position: absolute;
+    top: 15vh;
+    right: 10px; 
+    z-index:2;
+    width: 75%;
+    background-color: var(--background-color);
+    padding: 10px;
+    text-align: center;
+}
+
+.create_order_container h2{
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin: 5vh 0;
+}
+
+#create_order_form{
+    width: 100%;
+}
+
+.create_order_input{
+    margin: 5px;
+    padding: 5px;
+    border: solid 1px black;   
+    border-radius: 10px;
+    background-color: transparent;
+    color:black;
+    text-align: center;
+}
+.create_order_input::placeholder{
+    color:black;
+    opacity: 1;
+}
+
+#methodeExpedition{
+    width:80%;
+    text-align: center;
+}
+
+.shipping_input_container{
+    margin: 10px;
+    align-items: center;
+}
+
+.shipping_input_container label{
+    margin:10px;
+}
