@@ -1,7 +1,12 @@
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import CartItem from "../../components/cartItem/CartItem";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
+import "./Cart.css";
 
 export default function Cart() {
-  return <div>Cart</div>;
+  const { cartItems } = useShoppingCart();
+  return <div className="cart">
+    {cartItems.map(item=>(
+      <CartItem key={item.id} {...item} />
+    ))}
+  </div>;
 }

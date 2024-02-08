@@ -3,8 +3,11 @@ import "./Navbar.css";
 import { GiMagnifyingGlass } from "react-icons/gi";
 import { FaOpencart } from "react-icons/fa";
 import logo from "../../assets/Images/Sneaker-removebg-preview.png";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 export default function Navbar() {
+  const { cartQuantity } = useShoppingCart();
+
   return (
     <div>
       <nav>
@@ -29,7 +32,7 @@ export default function Navbar() {
             <Link to="/Cart">
               <FaOpencart />
             </Link>
-            <div className="count">3</div>
+            {cartQuantity > 0 && <div className="count">{cartQuantity}</div>}
           </li>
         </ul>
       </nav>
