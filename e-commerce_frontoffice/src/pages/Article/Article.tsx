@@ -7,6 +7,7 @@ import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
 import formatCurrency from "../../utils/formatCurrency";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 export default function Article() {
   const { article } = useArticle(useParams()["id"]) as {
@@ -24,6 +25,8 @@ export default function Article() {
       setAmount(amount - 1);
     }
   };
+
+  const { increaseCartQuantity } = useShoppingCart();
 
   return (
     <div className="article">
@@ -66,7 +69,14 @@ export default function Article() {
           <StarRating rating={article?.rating.rate} />
           <span>{article?.rating.count}</span>
         </div> */}
-        <button className="add-to-cart">Ajouter au panier</button>
+        <button
+          onClick={() => {
+            increaseCartQuantity(article?.id);
+          }}
+          className="add-to-cart"
+        >
+          Ajouter au panier
+        </button>
       </div>
     </div>
   );

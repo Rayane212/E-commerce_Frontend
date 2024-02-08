@@ -2,7 +2,6 @@ import { FaOpencart } from "react-icons/fa";
 import "./ProductsItem.css";
 import ProductModel from "../../models/ProductModel";
 import formatCurrency from "../../utils/formatCurrency";
-import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 export default function ProductsItem({
   id,
@@ -11,10 +10,6 @@ export default function ProductsItem({
   category,
   price,
 }: ProductModel) {
-
-  const {getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart} = useShoppingCart();
-  const quantity = getItemQuantity(id);
-
   return (
     <article>
       <img src={image} alt={title} />
@@ -24,7 +19,7 @@ export default function ProductsItem({
           <p>{category}</p>
           <span>{formatCurrency(price)}</span>
         </div>
-        <button onClick={()=>{increaseCartQuantity(id)}}>
+        <button>
           <FaOpencart />
         </button>
       </div>
