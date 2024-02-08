@@ -70,7 +70,7 @@ export default function PaymentSettings() {
   }, [])
   return (
     <>
-     <div className='payments_settings_container'>
+     <div className='settings_container'>
      <h2>Paramètres de Paiements</h2>
      {Object.entries(sections).map((data: [string, any]) => {
          return (

@@ -51,7 +51,7 @@ export default function UsersSettings() {
     }, [])
     
   return (
-    <div className='users_settings_container'>
+    <div className='settings_container'>
         <h2>Paramètres Utilisateurs</h2>
         {Object.entries(sections).map((data: [string, any]) => {
             return ( 

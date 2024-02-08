@@ -1,6 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from '../pages/Home';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Orders from '../pages/Orders';
 import Customers from '../pages/Customers';
 import Products from '../pages/Products';
@@ -8,10 +7,13 @@ import Settings from '../pages/Settings';
 import OrderPage from '../views/orders/OrderPage/OrderPage';
 
 export default function AppRouter() {
+  const windowLocation = window.location.pathname;
+  const navigate = useNavigate();
+  if (windowLocation === '/'){
+    navigate('/orders');
+  }
   return ( 
     <Routes>
-      <Route path='/' Component={Home}/>
-      <Route path='/home' Component={Home}/>
       <Route path='/orders' Component={Orders}/>
       <Route path='/orders/:id' element={<OrderPage/>} />
       <Route path='/customers' Component={Customers}/>

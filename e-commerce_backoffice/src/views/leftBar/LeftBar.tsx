@@ -9,7 +9,6 @@ interface MenuItem {
 
 const Menu_LeftBar: FC = () => {
   let menuItems: MenuItem[] = [
-    { text: 'Accueil', link: '/home' },
     { text: 'Commandes', link: '/orders' },
     { text: 'Produits', link: '/products' },
     { text: 'Clients', link: '/customers' },

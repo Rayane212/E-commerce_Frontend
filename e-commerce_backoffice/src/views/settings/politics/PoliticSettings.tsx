@@ -178,7 +178,7 @@ export default function PoliticSettings() {
 
   return (
     <>
-     <div className='main_page payments_settings_container'>
+     <div className='main_page settings_container'>
      <h2>Politiques</h2>
      {Object.entries(sections).map((data: [string, any]) => {
       const new_politic = politic_format(data[1].politic['content'] ? data[1].politic['content'] : ''); 

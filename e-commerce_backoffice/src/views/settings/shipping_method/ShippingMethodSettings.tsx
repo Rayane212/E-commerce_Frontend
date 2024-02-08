@@ -109,7 +109,7 @@ export default function ShippingMethodSettings() {
 
   return (
     <>
-     <div className='payments_settings_container'>
+     <div className='settings_container'>
      <h2>Méthodes de livraison</h2>
      {Object.entries(sections).map((data: [string, any]) => {
          return (
