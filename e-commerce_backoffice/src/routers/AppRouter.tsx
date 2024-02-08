@@ -5,7 +5,6 @@ import Orders from '../pages/Orders';
 import Customers from '../pages/Customers';
 import Products from '../pages/Products';
 import Settings from '../pages/Settings';
-import Stats from '../pages/Stats';
 import OrderPage from '../views/orders/OrderPage/OrderPage';
 
 export default function AppRouter() {
@@ -23,7 +22,6 @@ export default function AppRouter() {
       <Route path='/settings/payments' Component={Settings} />
       <Route path="/settings/shipping_method" Component={Settings}/>
       <Route path="/settings/politics" Component={Settings}/>
-      <Route path='/stats' Component={Stats}/>
     </Routes>
   )
 }

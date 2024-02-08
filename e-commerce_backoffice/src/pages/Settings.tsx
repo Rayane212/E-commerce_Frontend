@@ -1,5 +1,4 @@
 import React from 'react';
-import GeneralSettings from '../views/settings/general/GeneralSettings';
 import '../views/settings/settings.css'
 import PageHeader from '../views/general/page_header/PageHeader';
 import { SettingsOptions } from '../models/settings/SettingsOptions';
@@ -10,27 +9,22 @@ function Settings() {
         'general': {
             'title': 'Général',
             'link' : "/general",
-            'component': <GeneralSettings/>
             },
         'users': {
             'title': 'Utilisateurs',
             'link' : "/users",
-            // 'component': <GeneralSettings/>
         },
         'payments': {
             'title': 'Paiements',
             'link' : "/payments",
-            // 'component': <GeneralSettings/>
         },
         'shipping_method': {
             'title': 'Méthodes de livraison',
             'link' : "/shipping_method",
-            // 'component': <GeneralSettings/>
         }, 
         'politics': {
             'title': 'Politiques',
             'link' : "/politics",
-            // 'component': <GeneralSettings/>
         },
     };
 
@@ -46,7 +40,7 @@ function Settings() {
                 isRecord={false}
                 optionsList={settingsOptionsList}
             />
-            <SettingsRouter test="test"/>
+            <SettingsRouter/>
         </div>
         
     )

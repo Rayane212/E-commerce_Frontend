@@ -95,18 +95,18 @@ export default function ShippingMethodSettings() {
       }
     })
   }
-  // useEffect(() => {
-  //   const shipping_methods_data = useSettings.getShippingMethodsInfos();
-  //   shipping_methods_data.then((data) => {
-  //     setState({
-  //         shipping_methods: data as ShippingMethod[],
-  //         toSave: []
-  //     });
-  //     console.log(data as ShippingMethod[])
-  //   })
-  // }, [])
+  useEffect(() => {
+    const shipping_methods_data = useSettings.getShippingsMethod();
+    shipping_methods_data.then((data: any) => {
+      setState({
+          shipping_methods: data as ShippingMethod[],
+          toSave: []
+      });
+      console.log(data as ShippingMethod[])
+    })
+  }, [])
 
-  useEffect(() => {}, [state?.toSave])
+
   return (
     <>
      <div className='payments_settings_container'>
@@ -132,13 +132,11 @@ export default function ShippingMethodSettings() {
                         {data[1].list_1.length !== 0 ? 
                          <div className='infos_container_grid'>
                             <MapShippingMethods list={data[1].list_1} dicoText={dicoText} dicoIcon={dicoIcon} sectionType={data[1].section_type}/>
-                             {/* <MapSettings list={data[1].list_1} dicoText={dicoText} dicoIcon={dicoIcon} isArray={true}/> */}
                          </div>
                          : ''}
                          {data[1].list_2.length !== 0 ?
                          <div className='infos_container_grid'>
                             <MapShippingMethods list={data[1].list_2} dicoText={dicoText} dicoIcon={dicoIcon} sectionType={data[1].section_type}/>
-                             {/* <MapSettings list={data[1].list_2} dicoText={dicoText} dicoIcon={dicoIcon} isArray={true}/> */}
                          </div>
                           : ''}
                     </div>

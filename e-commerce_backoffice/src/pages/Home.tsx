@@ -16,9 +16,6 @@ function Home() {
                 isRecord={false}
                 optionsList={{}}
             />
-            {/* <OrdersRecap/> */}
-            <Customers_Recap/>
-            {/* <ProductsRecap/> */}
         </div>
     )
 }

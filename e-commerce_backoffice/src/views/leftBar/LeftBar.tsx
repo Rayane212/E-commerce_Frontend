@@ -13,8 +13,7 @@ const Menu_LeftBar: FC = () => {
     { text: 'Commandes', link: '/orders' },
     { text: 'Produits', link: '/products' },
     { text: 'Clients', link: '/customers' },
-    { text: 'Statistiques', link: '/stats' },
-    { text: 'Paramètres', link: '/settings' },
+    { text: 'Paramètres', link: '/settings'},
   ];
   return (
     <ul>

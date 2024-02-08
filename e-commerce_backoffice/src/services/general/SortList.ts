@@ -34,6 +34,8 @@ export default function SortList (list: any[], sort_type: string, sort_order: st
         'id': sortTypeNumber,
         'name': sortTypeText,
         'price': sortTypeNumber,
+        'total': sortTypeNumber,
+        'orders': sortTypeNumber,
         'date': sortTypeDate,
         'stock': sortTypeNumber
     };

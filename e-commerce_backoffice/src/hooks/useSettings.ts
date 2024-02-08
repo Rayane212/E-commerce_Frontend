@@ -96,6 +96,11 @@ class useSettings{
     const paymentsLegalInfos = await GetAllPaymentLegalInfos()
     return paymentsLegalInfos
   }
+
+  async getShippingsMethod(){
+    const shippingsMethod = await GetAllShippingsMethod()
+    return shippingsMethod
+  }
   
 }
 

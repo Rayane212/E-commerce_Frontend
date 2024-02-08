@@ -6,11 +6,7 @@ import PaymentSettings from '../views/settings/payments/PaymentSettings';
 import ShippingMethodSettings from '../views/settings/shipping_method/ShippingMethodSettings';
 import PoliticSettings from '../views/settings/politics/PoliticSettings';
 
-interface SettingsRouterProps {
-    test: string;
-}
-
-const SettingsRouter: React.FC<SettingsRouterProps> = ({test}) => {
+const SettingsRouter: React.FC = () => {
     const windowLocation = window.location.pathname;
     const navigate = useNavigate();
     if (windowLocation.includes('/settings')) {

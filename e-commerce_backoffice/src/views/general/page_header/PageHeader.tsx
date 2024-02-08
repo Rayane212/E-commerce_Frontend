@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useEffect } from 'react'
+import React from 'react'
 import { HeaderProps } from '../../../models/HeaderProps'
 import MapOptionsRecord from '../MapOptionsRecord'
 import MapOptionsSettingsOptions from '../MapOptionsSettingsOptions'

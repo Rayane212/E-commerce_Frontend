@@ -16,7 +16,6 @@ export default function UsersSettings() {
     const [state, setState] = React.useState<UsersSettingsState>();
     const adminsInfosArray = state ? Object.entries(state?.admins as Admin[]) : [];
     const employeesInfosArray = state ? Object.entries(state?.employees as Employe[]) : [];
-    const collaboratorsInfosArray: string[] = [];
     const dicoText: { [key: string]: string } = useSettings.getDicoText() as { [key: string]: string };
     const dicoIcon: { [key: string]: string } = useSettings.getDicoIcon() as { [key: string]: string };
 
@@ -35,13 +34,6 @@ export default function UsersSettings() {
             "settings_container_id": "profil_settings_container",
             "list_1": employeesInfosArray?.slice(0, 2),
             "list_2": employeesInfosArray?.slice(2, 4)
-        }, 
-        'Collaborateurs Externes' : {
-            'title': "Collaborateurs Externes",
-            "data-show-btn": "admin_setting_container",
-            "settings_container_id": "profil_settings_container",
-            "list_1": collaboratorsInfosArray?.slice(0, 2),
-            "list_2": collaboratorsInfosArray?.slice(2, 4)
         }
     }
     
@@ -70,15 +62,6 @@ export default function UsersSettings() {
                     </div>
                     <div className='settings_container' id={data[1]['settings_container_id']}>
                         <div className='infos_container'>
-                            {/* {data[1].list_1.length === 0 && data[1].list_2.length === 0 ? <p>Aucun résultat trouvé</p> :
-                            <>
-                                <div className='infos_container_grid'>
-                                    <MapUsersSettings list={data[1].list_1} dicoIcon={dicoIcon} dicoText={dicoText} />
-                                </div>
-                                <div className='infos_container_grid'>
-                                    <MapSettings list={data[1].list_2} dicoIcon={dicoIcon} dicoText={dicoText} isArray={true} />
-                                </div>
-                            </> } */}
                             {!data[1] ? '' : <> 
                             {data[1].list_1.length === 0 && data[1].list_2.length === 0 ? 
                                 
@@ -88,7 +71,7 @@ export default function UsersSettings() {
                                     <MapUsersSettings list={data[1].list_1} dicoIcon={dicoIcon} dicoText={dicoText} />
                                 </div>
                                 <div className='infos_container_grid'>
-                                    <MapSettings list={data[1].list_2} dicoIcon={dicoIcon} dicoText={dicoText} isArray={true} />
+                                    <MapUsersSettings list={data[1].list_2} dicoIcon={dicoIcon} dicoText={dicoText} />
                                 </div>
                             </>
                             }
