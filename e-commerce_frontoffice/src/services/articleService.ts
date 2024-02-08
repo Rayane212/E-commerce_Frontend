@@ -8,7 +8,7 @@ class ArticleService {
     return data;
   }
 
-  public async getArticle(id: string): Promise<ProductModel> {
+  public async getArticle(id: number): Promise<ProductModel> {
     const response = await fetch(`${baseArticle}/${id}`);
     const data = await response.json();
     return data;

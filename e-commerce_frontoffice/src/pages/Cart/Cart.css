@@ -1,0 +1,22 @@
+.cart {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+  padding: 4em;
+
+  & .cart-item {
+    height: 20vh;
+    width: 100%;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2em;
+
+    & img {
+      height: 100%;
+    }
+  }
+}

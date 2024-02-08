@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProductModel from "../models/ProductModel";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import articleService from "../services/articleService";
 
-export default function useArticle(id?: string) {
+export default function useArticle(id?: number) {
   const [article, setArticle] = useState<ProductModel | ProductModel[]>(
     [] as ProductModel[]
   );
